@@ -38,14 +38,6 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export EDITOR='vim'
-export SVN_EDITOR=$EDITOR
-
-# Enable # style comments as commands
-setopt INTERACTIVE_COMMENTS
-
-bindkey "^P" history-substring-search-up
-bindkey "^N" history-substring-search-down
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
