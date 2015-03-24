@@ -1,0 +1,19 @@
+startup_message off
+defscrollback 100000
+msgminwait 0
+bind o focus
+bindkey ^@ copy
+escape ^Xx
+term screen-256color
+attrcolor b ".I"
+defbce "on"
+vbell off
+bell_msg "Bell in window %n"
+
+register g ^x[kkY
+bind u process g
+
+bind y eval "writebuf" "exec sh -c 'xsel < /tmp/screen-exchange'"
+
+hardstatus alwayslastline
+hardstatus string "%{= kG}%-w%{.rW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a "
