@@ -1,0 +1,7 @@
+[user]
+	name = Adam Engstrom
+	email = adaengst@gmail.com
+[alias]
+   out = log @{u}..
+[push]
+	default = simple

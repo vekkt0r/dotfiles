@@ -1,0 +1,37 @@
+Emacs.toolBar: -1
+!Emacs.FontBackend: xft
+!Xft.embolden: true
+xterm*utf8: 1
+*VT100*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
+xterm*saveLines: 10000
+xterm*metaSendsEscape: true
+xterm*multiScroll: true
+xterm*backarrowKey: false
+xterm*background: #3f3f3f
+xterm*foreground: #dcdccc
+
+! black + red
+!xterm*color0:     #3f3f3f
+xterm*color0:      #101010
+xterm*color1:      #705050
+! green + yellow
+xterm*color2:      #60b48a
+xterm*color3:      #f0dfaf
+! blue + purple
+xterm*color4:      #506070
+xterm*color5:      #dc8cc3
+! cyan + white
+xterm*color6:      #8cd0d3
+xterm*color7:      #dcdccc
+! bright-black + bright-red
+xterm*color8:      #000000
+xterm*color9:      #dca3a3
+! bright-green + bright-yellow
+xterm*color10:     #c3bf9f
+xterm*color11:     #f0dfaf
+! bright-blue + bright-purple
+xterm*color12:     #94bff3
+xterm*color13:     #ec93d3
+! bright-cyan + bright-white
+xterm*color14:     #93e0e3
+xterm*color15:     #ffffff

@@ -1,0 +1,4 @@
+noremap l gt
+noremap h gT
+highlight Hint -append font-size:16px;
+set editor=emacsclient
