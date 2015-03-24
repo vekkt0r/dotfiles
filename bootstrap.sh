@@ -16,6 +16,7 @@ ln -s $PWD/ssh_config ~/.ssh/config
 ln -s $PWD/gitconfig ~/.gitconfig
 mkdir -p ~/.config/mc
 ln -s $PWD/mc ~/.config/mc/ini
+ln -s prelude ~/.emacs.d
 
 unamestr=$(uname)
 case $unamestr in
