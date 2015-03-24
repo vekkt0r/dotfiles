@@ -27,6 +27,7 @@ case $unamestr in
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
 		ln -s $PWD/Xresources ~/.Xresources
+		sudo apt-get install -y zsh autojump ack-grep
 	;;
 esac
 # TODO: Add autojump installation
