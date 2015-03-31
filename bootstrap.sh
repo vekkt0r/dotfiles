@@ -30,4 +30,3 @@ case $unamestr in
 		sudo apt-get install -y zsh autojump ack-grep
 	;;
 esac
-# TODO: Add autojump installation
