@@ -17,6 +17,12 @@ ln -s $PWD/gitconfig ~/.gitconfig
 mkdir -p ~/.config/mc
 ln -s $PWD/mc ~/.config/mc/ini
 ln -s prelude ~/.emacs.d
+ln -s tmux.conf~/.tmux.conf
+
+if [ ! -d ~/.tmux/plugins/tpm ]; then
+	mkdir -p ~/.tmux/plugins
+	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+fi
 
 unamestr=$(uname)
 case $unamestr in
