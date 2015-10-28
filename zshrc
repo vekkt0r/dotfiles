@@ -37,7 +37,7 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH=$HOME/bin:/usr/local/bin:$PATH:/opt/local/Library/Frameworks/Python.framework/Versions/2.7/bin/
+export PATH=$HOME/bin:/opt/emacs/bin:/usr/local/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
