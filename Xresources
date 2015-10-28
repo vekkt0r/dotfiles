@@ -1,6 +1,13 @@
 Emacs.toolBar: -1
 !Emacs.FontBackend: xft
 !Xft.embolden: true
+! Xft settings
+!Xft.dpi:        96
+!Xft.antialias:  true
+!Xft.rgba:       none
+!Xft.hinting:    true
+!Xft.hintstyle:  hintfull
+!---
 xterm*utf8: 1
 *VT100*translations: #override Shift <Btn1Up>: exec-formatted("firefox '%t'", PRIMARY)
 xterm*saveLines: 10000
