@@ -71,7 +71,7 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-   names = {"ec", "st", "ff", "mc", 5,6,7,8,9},
+   names = {"ec", "st", "ff", "im", 5,6,7,8,9},
    layouts = {layouts[1], layouts[3], layouts[1], layouts[1], layouts[1],
              layouts[1],layouts[1],layouts[1],layouts[1],}
 }
@@ -296,7 +296,7 @@ clientkeys = awful.util.table.join(
         end),
     awful.key({ modkey, "Mod1" }, "l", function () awful.util.spawn_with_shell("xdg-screensaver lock > /tmp/xdglock") end),
     awful.key({ modkey, }, "F11", function () awful.util.spawn_with_shell("bob_power off") end),
-    awful.key({ modkey, }, "F12", function () awful.util.spawn_with_shell("bob_power on") end),
+    awful.key({ modkey, }, "F12", function () awful.util.spawn_with_shell("zign_and_flash") end),
     awful.key({ modkey, "Mod1"}, "space", function () awful.util.spawn_with_shell("toggle_key_layout") end)
 )
 
@@ -409,10 +409,10 @@ client.add_signal("unfocus", function(c) c.border_color = beautiful.border_norma
 os.execute("runonce.sh nm-applet &")
 os.execute("runonce.sh volumeicon &")
 os.execute("runonce.sh unity-settings-daemon &")
-os.execute("runonce.sh xfce4-power-manager --no-daemon &")
+--os.execute("runonce.sh xfce4-power-manager --no-daemon &")
 os.execute("runonce.sh compton &")
-os.execute("runonce.sh notify-listener")
-os.execute("runonce.sh owncloud")
+--os.execute("runonce.sh notify-listener")
+--os.execute("runonce.sh owncloud")
 os.execute("runonce.sh xbanish")
 --os.execute("runonce.sh davmail")
 awful.tag.setnmaster(0,tags[mouse.screen][2])
