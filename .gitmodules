@@ -3,7 +3,7 @@
 	url = https://github.com/vekkt0r/prelude.git
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
-	url = https://github.com/vekkt0r/oh-my-zsh.git
+	url = https://github.com/robbyrussel/oh-my-zsh.git
 [submodule "oh-my-zsh-custom"]
 	path = oh-my-zsh-custom
 	url = git@github.com:vekkt0r/oh-my-zsh-custom.git
