@@ -1,0 +1,14 @@
+"@\UF702" = "moveToBeginningOfLine:"; 
+"@\UF703" = "moveToEndOfLine:"; 
+"$@\UF702" = "moveToBeginningOfLineAndModifySelection:"; 
+"$@\UF703" = "moveToEndOfLineAndModifySelection:";
+"~x" = ("insertText:","\033x");
+"~d" = ("insertText:","\033d");
+"~f" = ("insertText:","\033f");
+"~b" = ("insertText:","\033b");
+"~w" = ("insertText:","\033w");
+"~v" = ("insertText:","\033v");
+"~p" = ("insertText:","\033p");
+"~n" = ("insertText:","\033n");
+"~g" = ("insertText:","\033g");
+"~q" = ("insertText:","\033q");
