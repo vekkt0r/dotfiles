@@ -1,10 +1,28 @@
 syntax on
 let mapleader = ','
-set ts=3
+set ts=4
+set shiftwidth=4
+set expandtab
 set t_Co=256
 set laststatus=2
+
+" Kconfig macros
+let @y = 'xx$3bd$i-€kb=y'
+let @n = 'i# $hhd$a is not set'
+
+" Buffer navigation
+set wildchar=<Tab> wildmenu wildmode=full
+map <Leader>a :bprev<Return>
+map <Leader>s :bnext<Return>
+map <Leader>d :bd<Return>
+map <Leader>f :b
+
+" Stuffs
+set wildignore+=build,*.o,*.k,*.a,*.la,*.d,*.svg,*.png
+
+" Jump to last known position when opening file
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
+" Plugin configuration
 let g:airline_powerline_fonts = 1
 execute pathogen#infect()
-"python from powerline.vim import setup as powerline_setup
-"python powerline_setup()
-"python del powerline_setup
