@@ -33,6 +33,14 @@ if [ ! -d ~/.vim/autoload/pathogen ]; then
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 fi
 
+if [ ! -d ~/src/ycmd ]; then
+	mkdir -p ~/.tmux/plugins
+    git clone https://github.com/Valloric/ycmd.git ~/src/ycmd
+    cd ~/src/ycmd
+    git submodule --init --recursive
+    ./build.py
+fi
+
 unamestr=$(uname)
 case $unamestr in
 	"Darwin")
