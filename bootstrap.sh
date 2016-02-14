@@ -20,6 +20,7 @@ ln -s prelude ~/.emacs.d
 ln -s $PWD/tmux.conf ~/.tmux.conf
 ln -s $PWD/compton.conf ~/.compton.conf
 ln -s $PWD/tigrc ~/.tigrc
+ln -s $PWD/radare2rc ~/.radare2rc
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
