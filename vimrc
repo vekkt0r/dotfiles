@@ -23,6 +23,9 @@ set wildignore+=build,*.o,*.k,*.a,*.la,*.d,*.svg,*.png
 " Jump to last known position when opening file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
+" But not for gitcommit
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
 " Plugin configuration
 let g:airline_powerline_fonts = 1
 execute pathogen#infect()
