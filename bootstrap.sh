@@ -18,7 +18,7 @@ ln -s $PWD/tigrc ~/.tigrc
 mkdir -p ~/.config/mc
 ln -s $PWD/mc ~/.config/mc/ini
 ln -s prelude ~/.emacs.d
-ln -s tmux.conf~/.tmux.conf
+ln -s $PWD/tmux.conf ~/.tmux.conf
 ln -s $PWD/compton.conf ~/.compton.conf
 ln -s $PWD/radare2rc ~/.radare2rc
 
