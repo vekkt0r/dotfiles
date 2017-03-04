@@ -31,6 +31,8 @@ fi
 if [ ! -d ~/.vim/autoload/pathogen ]; then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
+    git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
 fi
 
 if [ ! -d ~/src/ycmd ]; then
