@@ -41,6 +41,7 @@ if [ ! -d ~/src/ycmd ]; then
     cd ~/src/ycmd
     git submodule update --init --recursive
     ./build.py
+    cd -
 fi
 
 unamestr=$(uname)
