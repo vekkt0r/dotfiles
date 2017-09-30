@@ -12,6 +12,7 @@ ln -s $PWD/inputrc ~/.inputrc
 ln -s $PWD/ncmpcpp ~/.ncmpcpp
 ln -s $PWD/gdbinit.simple ~/.gdbinit
 ln -s $PWD/vimperatorrc ~/.vimperatorrc
+mkdir -p ~/.ssh/
 ln -s $PWD/ssh_config ~/.ssh/config
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/tigrc ~/.tigrc
@@ -38,7 +39,7 @@ if [ ! -d ~/src/ycmd ]; then
 	mkdir -p ~/.tmux/plugins
     git clone https://github.com/Valloric/ycmd.git ~/src/ycmd
     cd ~/src/ycmd
-    git submodule --init --recursive
+    git submodule update --init --recursive
     ./build.py
 fi
 
