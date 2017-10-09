@@ -28,7 +28,7 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
-if [ ! -d ~/.vim/autoload/pathogen ]; then
+if [ ! -f ~/.vim/autoload/pathogen ]; then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
@@ -39,8 +39,9 @@ if [ ! -d ~/src/ycmd ]; then
 	mkdir -p ~/.tmux/plugins
     git clone https://github.com/Valloric/ycmd.git ~/src/ycmd
     cd ~/src/ycmd
-    git submodule --init --recursive
+    git submodule update --init --recursive
     ./build.py
+    cd -
 fi
 
 unamestr=$(uname)
