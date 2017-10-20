@@ -6,10 +6,10 @@ mv ~/.bashrc ~/.bashrc.org
 ln -s $PWD/screenrc ~/.screenrc
 ln -s $PWD/vimrc ~/.vimrc
 ln -s $PWD/zshrc ~/.zshrc
-ln -s $PWD/irssi ~/.irssi
+ln -Ts $PWD/irssi ~/.irssi
 ln -s $PWD/bashrc ~/.bashrc
 ln -s $PWD/inputrc ~/.inputrc
-ln -s $PWD/ncmpcpp ~/.ncmpcpp
+ln -Ts $PWD/ncmpcpp ~/.ncmpcpp
 ln -s $PWD/gdbinit.simple ~/.gdbinit
 ln -s $PWD/vimperatorrc ~/.vimperatorrc
 ln -s $PWD/ssh_config ~/.ssh/config
