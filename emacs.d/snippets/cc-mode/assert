@@ -1,0 +1,4 @@
+# name: Etem ASSERT
+# key: assert
+# --
+ASSERT(${1:}, ${2:m_pLogger}, ${3:m_pErrorHandler}, etemerror::${4:APPLICATION_LOGIC_ERROR}, "${5:}");

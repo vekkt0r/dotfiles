@@ -1,0 +1,17 @@
+# name: doxygen header
+# key: doxact
+# --
+/** Copyright (C) 2012 ACTIA NORDIC AB. All rights reserved
+***
+*** @par Project:
+*** DHU2
+***
+*** @par Module:
+*** ${1:}
+***
+*** @par Purpose:
+*** ${2:}
+***
+*** @par Usage Notes:
+*** ${3:}
+***/
