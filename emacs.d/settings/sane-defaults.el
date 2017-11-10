@@ -135,4 +135,7 @@
 
 (add-to-list 'find-file-not-found-functions 'my-create-non-existent-directory)
 
+;; Automatic scroll of compilation output
+(setq compilation-scroll-output t)
+
 (provide 'sane-defaults)

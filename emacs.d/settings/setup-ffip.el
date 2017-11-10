@@ -2,7 +2,7 @@
 (require 's)
 
 ;; No need to be stingy
-(setq ffip-limit 4096)
+(setq ffip-limit 8096)
 
 ;; Use full project path for ffip
 
@@ -58,6 +58,11 @@
                  "/overlays/"
                  "/build/"
                  "/dist/"
+                 "/3pp/"
+                 "/dl/"
+                 "/docs/"
+                 "/mcache/"
+                 "/deprecated/"
                  "/vendor/"
                  ".cask/"
                  "/generated/"

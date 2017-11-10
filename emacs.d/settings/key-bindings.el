@@ -113,7 +113,7 @@
 (global-set-key (kbd "C-c y") 'bury-buffer)
 (global-set-key (kbd "C-c r") 'revert-buffer)
 (global-set-key (kbd "M-`") 'file-cache-minibuffer-complete)
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+;;(global-set-key (kbd "C-x C-b") 'ibuffer)
 
 ;; toggle two most recent buffers
 (fset 'quick-switch-buffer [?\C-x ?b return])
@@ -214,6 +214,11 @@
 (global-set-key (kbd "<s-up>") 'windmove-up)
 (global-set-key (kbd "<s-down>") 'windmove-down)
 
+;; Compilation
+(global-set-key [f9] 'recompile)
+(global-set-key (kbd "s-b") 'recompile)
+(global-set-key [(shift f9)] 'kill-compilation)
+
 ;; Magit
 (global-set-key (kbd "C-c g") 'magit-status)
 ;;(autoload 'magit-status-fullscreen "magit")
@@ -268,13 +273,16 @@
 (global-set-key (kbd "M-s M") 'multi-occur-in-matching-buffers)
 
 ;; Display and edit occurances of regexp in buffer
-(global-set-key (kbd "C-c o") 'occur)
+;;(global-set-key (kbd "C-c o") 'occur) TODO
+
+;; Find other file (.h)
+(global-set-key (kbd "C-c o") 'ff-find-other-file)
 
 ;; Find files by name and display results in dired
 (global-set-key (kbd "M-s f") 'find-name-dired)
 
 ;; Find file in project
-;;(global-set-key (kbd "C-x o") 'find-file-in-project) TODO
+(global-set-key (kbd "C-c p f") 'find-file-in-project)
 
 ;; Find file in project, with specific patterns
 (global-unset-key (kbd "C-x C-o")) ;; which used to be delete-blank-lines (also bound to C-c C-<return>)

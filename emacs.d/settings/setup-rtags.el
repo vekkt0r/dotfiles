@@ -56,7 +56,7 @@
 (setq company-backends (delete 'company-gtags company-backends))
 (setq company-backends (delete 'company-etags company-backends))
 (global-company-mode)
-(define-key c-mode-base-map (kbd "<C-tab>") (function company-complete))
+(define-key c-mode-base-map (kbd "<M-/>") (function company-complete))
 
 ;; Flycheck support
 (require 'flycheck-rtags)
