@@ -56,6 +56,7 @@
 (eval-after-load "smartparens" '(diminish 'smartparens-mode))
 (eval-after-load "whitespace-cleanup-mode" '(diminish 'whitespace-cleanup-mode))
 (eval-after-load "subword" '(diminish 'subword-mode))
+(eval-after-load "company" '(diminish 'company-mode))
 
 (defmacro rename-modeline (package-name mode new-name)
   `(eval-after-load ,package-name

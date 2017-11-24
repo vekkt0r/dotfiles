@@ -3,15 +3,13 @@
 (defun open-line-below ()
   (interactive)
   (end-of-line)
-  (newline)
-  (indent-for-tab-command))
+  (newline))
 
 (defun open-line-above ()
   (interactive)
   (beginning-of-line)
   (newline)
-  (forward-line -1)
-  (indent-for-tab-command))
+  (forward-line -1))
 
 (defun new-line-in-between ()
   (interactive)
