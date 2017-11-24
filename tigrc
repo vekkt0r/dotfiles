@@ -1,5 +1,5 @@
 set wrap-lines = yes
-set mouse = yes
+#set mouse = yes
 
 bind generic E !git format-patch -1 %(commit)
 bind generic V !git revert %(commit)
