@@ -83,7 +83,6 @@
      highlight-escape-sequences
      whitespace-cleanup-mode
      dockerfile-mode
-     beginend
      solarized-theme
      company
      diff-hl
@@ -127,7 +126,6 @@
 (require 'setup-rtags)
 (require 'setup-line)
 (require 'setup-tmpfiles)
-(beginend-global-mode)
 (global-diff-hl-mode +1)
 
 ;; Font lock dash.el
