@@ -126,6 +126,7 @@
 (require 'setup-rtags)
 (require 'setup-line)
 (require 'setup-tmpfiles)
+(require 'setup-whitespace)
 (global-diff-hl-mode +1)
 
 ;; Font lock dash.el
@@ -188,6 +189,9 @@
 
 ;; Setup key bindings
 (require 'key-bindings)
+
+;; Setup paste
+(require 'paste-primary)
 
 ;; Misc
 ;;(require 'my-misc)
