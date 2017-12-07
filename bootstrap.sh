@@ -15,8 +15,7 @@ ln -s $PWD/vimperatorrc ~/.vimperatorrc
 ln -s $PWD/ssh_config ~/.ssh/config
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/tigrc ~/.tigrc
-mkdir -p ~/.config/mc
-ln -s $PWD/mc ~/.config/mc/ini
+ln -s $PWD/mc ~/.config/mc
 ln -s prelude ~/.emacs.d
 ln -s $PWD/tmux.conf ~/.tmux.conf
 ln -s $PWD/compton.conf ~/.compton.conf
