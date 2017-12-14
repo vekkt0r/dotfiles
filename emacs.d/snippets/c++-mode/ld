@@ -1,0 +1,4 @@
+# name: Debug log
+# key: ld
+# --
+LOG_${1:$$(yas-choose-value '("DEBUG" "TRACE" "WARNING"))}(("${2:}"${3:}));
