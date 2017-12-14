@@ -44,7 +44,7 @@
 (define-key c-mode-base-map (kbd "C-.") (function tags-find-symbol))
 (define-key c-mode-base-map (kbd "C-,") (function tags-find-references))
 (define-key c-mode-base-map (kbd "C-<") (function rtags-find-virtuals-at-point))
-(define-key c-mode-base-map (kbd "M-i") (function tags-imenu))
+;;(define-key c-mode-base-map (kbd "M-i") (function tags-imenu))
 
 ;; Company support
 (require 'company)
