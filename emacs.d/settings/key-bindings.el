@@ -159,10 +159,10 @@
 (global-set-key (kbd "M-p") 'backward-paragraph)
 (global-set-key (kbd "M-n") 'forward-paragraph)
 
-(global-set-key (kbd "M-<up>") 'smart-up)
-(global-set-key (kbd "M-<down>") 'smart-down)
-(global-set-key (kbd "M-<left>") 'smart-backward)
-(global-set-key (kbd "M-<right>") 'smart-forward)
+;;(global-set-key (kbd "M-<up>") 'smart-up)
+;;(global-set-key (kbd "M-<down>") 'smart-down)
+;;(global-set-key (kbd "M-<left>") 'smart-backward)
+;;(global-set-key (kbd "M-<right>") 'smart-forward)
 
 ;; Webjump let's you quickly search google, wikipedia, emacs wiki
 (global-set-key (kbd "C-x g") 'webjump)
@@ -225,7 +225,7 @@
 ;;(autoload 'magit-status-fullscreen "magit")
 
 ;; Clever newlines
-(global-set-key (kbd "C-o") 'open-line-and-indent)
+;(global-set-key (kbd "C-o") 'open-line-and-indent)
 (global-set-key (kbd "<C-return>") 'open-line-below)
 (global-set-key (kbd "<C-S-return>") 'open-line-above)
 (global-set-key (kbd "<M-return>") 'new-line-dwim)
@@ -276,6 +276,9 @@
 ;; Display and edit occurances of regexp in buffer
 ;;(global-set-key (kbd "C-c o") 'occur) TODO
 
+;; Isearch occur
+(define-key isearch-mode-map (kbd "C-o") 'isearch-occur)
+
 ;; Find other file (.h)
 (global-set-key (kbd "C-c o") 'ff-find-other-file)
 
@@ -284,6 +287,9 @@
 
 ;; Find file in project
 (global-set-key (kbd "C-c p f") 'find-file-in-project)
+
+;; Find function
+(global-set-key (kbd "M-i") 'imenu-anywhere)
 
 ;; Find file in project, with specific patterns
 (global-unset-key (kbd "C-x C-o")) ;; which used to be delete-blank-lines (also bound to C-c C-<return>)
