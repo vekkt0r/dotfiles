@@ -99,7 +99,7 @@ horizontal_split=1
 vertical_equal=1
 left_panel_size=79
 horizontal_equal=1
-top_panel_size=31
+top_panel_size=32
 
 [Misc]
 timeformat_recent=%b %e %H:%M
