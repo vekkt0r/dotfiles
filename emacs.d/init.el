@@ -86,6 +86,7 @@
      solarized-theme
      company
      diff-hl
+     lsp-mode
      )))
 
 (condition-case nil
@@ -123,7 +124,8 @@
 (require 'setup-perspective)
 (require 'setup-ffip)
 (require 'setup-flycheck)
-(require 'setup-rtags)
+;;(require 'setup-rtags)
+(require 'setup-cquery)
 (require 'setup-line)
 (require 'setup-tmpfiles)
 (require 'setup-whitespace)
