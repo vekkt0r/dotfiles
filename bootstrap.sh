@@ -32,6 +32,8 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
     git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
+    git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
+    git clone https://github.com/vim-scripts/Conque-GDB.git ~/.vim/bundle/Conque-GDB
 fi
 
 if [ ! -d ~/src/ycmd ]; then
