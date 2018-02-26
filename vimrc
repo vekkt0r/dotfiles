@@ -28,6 +28,12 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " But not for gitcommit
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" ConqueGdb setup
+let g:ConqueGdb_GdbExe = "arm-linux-gnueabihf-gdb"
+
+" Should be enabled for nerdcommenter
+filetype plugin on
+
 " Plugin configuration
 let g:airline_powerline_fonts = 1
 execute pathogen#infect()
