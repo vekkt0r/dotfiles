@@ -67,6 +67,12 @@
           (directory :tag "Custom resource directory"))
   :group 'cquery)
 
+(defcustom cquery-index-blacklist
+  nil
+  "List of files to exclude from indexing"
+  :type 'list
+  :group 'cquery)
+
 (defcustom cquery-indexer-count
   0
   "Number of workers cquery will use to index each project.
@@ -90,20 +96,20 @@
   "The face used to mark types"
   :group 'cquery)
 
-(defface cquery-sem-member-func-face
-  '((t :slant italic :inherit font-lock-function-name-face))
-  "The face used to mark member functions"
-  :group 'cquery)
+;;(defface cquery-sem-member-func-face
+;;  '((t :inherit font-lock-function-name-face))
+;;  "The face used to mark member functions"
+;;  :group 'cquery)
 
 (defface cquery-sem-free-func-face
   '((t :inherit font-lock-function-name-face))
   "The face used to mark free functions"
   :group 'cquery)
 
-(defface cquery-sem-member-var-face
-  '((t :slant italic :inherit font-lock-variable-name-face))
-  "The face used to mark member variables"
-  :group 'cquery)
+;;(defface cquery-sem-member-var-face
+;;  '((t :slant italic :inherit font-lock-variable-name-face))
+;;  "The face used to mark member variables"
+;;  :group 'cquery)
 
 (defface cquery-sem-free-var-face
   '((t :inherit font-lock-variable-name-face))
@@ -418,6 +424,7 @@ Read document for all choices."
                         (expand-file-name cquery-cache-dir (lsp--workspace-root workspace)))
                       ,@(when cquery-resource-dir
                           `(:resourceDirectory ,(expand-file-name cquery-resource-dir)))
+                      :indexBlacklist ,cquery-index-blacklist
                       :indexerCount ,cquery-indexer-count
                       :enableProgressReports ,json-false))) ; TODO: prog reports for modeline
 
