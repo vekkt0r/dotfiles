@@ -30,9 +30,15 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
 " ConqueGdb setup
 let g:ConqueGdb_GdbExe = "arm-linux-gnueabihf-gdb"
+let g:ConqueGdb_Leader = '\'
 
 " Should be enabled for nerdcommenter
 filetype plugin on
+
+" ClangFormat setup
+let g:clang_format#command = "clang-format-5.0"
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 " Plugin configuration
 let g:airline_powerline_fonts = 1
