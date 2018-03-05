@@ -1,17 +1,17 @@
 /* Show title of unread tabs with red and italic font */
 /*
- * .tab.unread .label {
- *   color: red !important;
- *     font-style: italic !important;
- *     }
- *     */
+.tab.unread .label {
+  color: red !important;
+  font-style: italic !important;
+}
+*/
 
 /* Add private browsing indicator per tab */
 /*
- * .tab.private-browsing .label:before {
- *   content: "🕶";
- *   }
- *   */
+.tab.private-browsing .label:before {
+  content: "🕶";
+}
+*/
 /* Hide .twisty and adjust margins so favicons have 7px on left. */
 .tab .twisty {
     visibility: hidden;
@@ -92,7 +92,7 @@
     background-color: #383f3d;
 }
 .tab.active:hover {
-    background-color: #8fa876 !important;
+    background-color: #b58900 !important;
 }
 
 
