@@ -31,6 +31,9 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 " ConqueGdb setup
 let g:ConqueGdb_GdbExe = "arm-linux-gnueabihf-gdb"
 let g:ConqueGdb_Leader = '\'
+let g:ConqueTerm_CWInsert = 1
+let g:ConqueTerm_InsertOnEnter = 1
+let g:ConqueTerm_CloseOnEnd = 1
 
 " Should be enabled for nerdcommenter
 filetype plugin on
