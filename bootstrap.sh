@@ -35,6 +35,8 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
     git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
     git clone https://github.com/vim-scripts/Conque-GDB.git ~/.vim/bundle/Conque-GDB
     git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
+    git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips 
+    ln -s ~/src/dotfiles/snippets/ultisnips ~/.vim/ultisnips
 fi
 
 if [ ! -d ~/src/ycmd ]; then

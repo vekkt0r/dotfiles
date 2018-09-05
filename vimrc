@@ -16,17 +16,40 @@ map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b#<Return>
+
+" Git convenience
+map <Leader>l :!tig %:p<Return>
+map <Leader>B :!git blame %:p<Return>
+map <Leader>D :!git diff %:p<Return>
+
+" Trailing semicolon and exit insert mode
 inoremap <Leader>; <C-o>$<C-o>A;<Esc>
+
+" Add arguments for LOG_
 inoremap <Leader>, <C-o>h<C-o>h,
+
+" Trailing whitespace cleanup
+map <Leader>w :%s/\s\+$//e<Return>
+
+" UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+set runtimepath+=~/src/dotfiles/snippets
+let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips", "UltiSnips"]
 
 " Stuffs
 set wildignore+=build,*.o,*.k,*.a,*.la,*.d,*.svg,*.png
+set shell=/usr/bin/zsh
 
 " Jump to last known position when opening file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " But not for gitcommit
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
+
+" Avoid confusing MatchParen hilight
+hi MatchParen cterm=bold ctermbg=none ctermfg=red
 
 " ConqueGdb setup
 let g:ConqueGdb_GdbExe = "arm-linux-gnueabihf-gdb"
