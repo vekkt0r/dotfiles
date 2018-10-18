@@ -36,6 +36,12 @@ inoremap <Leader>, <C-o>h<C-o>h,
 " Trailing whitespace cleanup
 map <Leader>w :%s/\s\+$//e<Return>
 
+" Ack configuration
+if executable('ag')
+    let g:ackprg = 'ag --vimgrep'
+endif
+map <Leader>A :Ack! <C-r><C-w><Return>
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
