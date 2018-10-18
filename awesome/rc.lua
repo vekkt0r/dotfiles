@@ -39,7 +39,8 @@ end
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init(awful.util.getdir("config") .. "/themes/awesome-solarized/dark/theme.lua")
+beautiful.init(awful.util.getdir("config") .. "/themes/blueres/theme.lua")
+naughty.config.defaults['icon_size'] = 100
 
 -- This is used later as the default terminal and editor to run.
 terminal = "alacritty"
@@ -112,6 +113,7 @@ mymainmenu = awful.menu({ items = {
    { "&emacs", "emacs" },
    { "&firefox", "firefox" },
    { "&thunderbird", "thunderbird" },
+   { "&zeal", "zeal" },
    { "&tuxcmd", "tuxcmd"},
    { "&nautilus", "nautilus"},
    { "&Remmina", "remmina"},
@@ -119,8 +121,8 @@ mymainmenu = awful.menu({ items = {
  }
 })
 
-mylauncher = awful.widget.launcher({ image = beautiful.awesome_icon,
-                                     menu = mymainmenu })
+mylauncher = wibox.layout.margin(awful.widget.launcher({ image = beautiful.awesome_icon, 
+                                                         menu = mymainmenu }), 9,9,9,9)
 
 -- Menubar configuration
 menubar.utils.terminal = terminal -- Set the terminal for applications that require it
@@ -216,7 +218,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 -- Define a tag table which hold all screen tags.
 tags = {
    names = {1, "tb", "ff", "im", 5,6,7,8,9},
-   layouts = {layouts[1], layouts[2], layouts[4], layouts[2], layouts[1],
+   layouts = {layouts[1], layouts[4], layouts[4], layouts[2], layouts[1],
               layouts[1],layouts[1],layouts[1],layouts[1],}
 }
 tags2 = {
@@ -240,7 +242,7 @@ awful.screen.connect_for_each_screen(function(s)
     s.mypromptbox = awful.widget.prompt()
     -- Create an imagebox widget which will contains an icon indicating which layout we're using.
     -- We need one layoutbox per screen.
-    s.mylayoutbox = awful.widget.layoutbox(s)
+    s.mylayoutbox = wibox.container.margin(awful.widget.layoutbox(s), 10,11,11,11)
     s.mylayoutbox:buttons(awful.util.table.join(
                            awful.button({ }, 1, function () awful.layout.inc( 1) end),
                            awful.button({ }, 3, function () awful.layout.inc(-1) end),
@@ -255,6 +257,11 @@ awful.screen.connect_for_each_screen(function(s)
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
 
+    -- Systray
+    local systray = wibox.widget.systray()
+    systray:set_base_size(20)
+    local systray_wrap = wibox.layout.margin(systray, 0,0,6,5)
+
     -- Add widgets to the wibox
     s.mywibox:setup {
         layout = wibox.layout.align.horizontal,
@@ -268,7 +275,7 @@ awful.screen.connect_for_each_screen(function(s)
         { -- Right widgets
             layout = wibox.layout.fixed.horizontal,
             kbdcfg.widget,
-            wibox.widget.systray(),
+            systray_wrap,
             mytextclock,
             s.mylayoutbox,
         },
@@ -469,14 +476,26 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "Slack" },
       properties = { fullscreen = false, screen = "DP-1", tag = "im" } },
+    { rule = { class = "Rocket.Chat+" },
+      properties = { fullscreen = false, screen = "DP-1", tag = "im" } },
     { rule = { class = "Emacs24" },
       properties = { fullscreen = true, screen = "HDMI-2", tag = "ec" } },
     { rule = { class = "Firefox" },
       properties = { fullscreen = false, screen = "DP-1", tag = "ff" } },
     { rule = { class = "Thunderbird" },
-      properties = { screen = 1, tag = "2" } },
+      properties = { screen = "DP-1", tag = "tb" } },
+    { rule = { class = "Evolution" },
+      properties = { screen = "DP-1", tag = "tb" } },
+    { rule = { class = "evolution-alarm-notify" },
+      properties = { screen = "DP-1", tag = "tb" } },
+    { rule = { class = "Evince" },
+      properties = { screen = "DP-1", tag = "tb" } },
+    { rule = { class = "Zeal" },
+      properties = { screen = "DP-1", tag = "tb" } },
     { rule = { class = "libreoffice" },
       properties = { fullscreen = true } },
+    { rule = { class = "one" },
+      properties = { screen = "DP-1", tag = "1" } },
 
     -- Different rules for Firefox windows
     --{ rule = { class = "Firefox", instance = "Navigator" },
@@ -576,6 +595,6 @@ os.execute("runonce.sh compton &")
 --os.execute("xset dpms 600 1800 0")
 --os.execute("xset mouse 1 0")
 -- st layouting factor
---awful.tag.incmwfact(0.20,tags[2][2])
+awful.tag.incmwfact(0.20,tags[2]["st"])
 -- Thunderbird master factor
 --awful.tag.incmwfact(0.20,tags[1][2])
