@@ -14,7 +14,7 @@ let @n = 'i# $hd$a is not set'
 set wildchar=<Tab> wildmenu wildmode=full
 map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
-map <Leader>d :bd<Return>
+map <Leader>d :bprev<CR>bd #<Return>
 map <Leader>f :b#<Return>
 
 " Git convenience
