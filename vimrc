@@ -25,6 +25,11 @@ map <Leader>D :!git diff %:p<Return>
 " Trailing semicolon and exit insert mode
 inoremap <Leader>; <C-o>$<C-o>A;<Esc>
 
+" Open file in same directory convenience
+map <Leader>o :e <C-r>%<C-w><C-w><C-w>
+"map <Leader>h :e <C-r>%<C-h><C-h>hh<Return>
+map <Leader>h :call CurtineIncSw()<Return>
+
 " Add arguments for LOG_
 inoremap <Leader>, <C-o>h<C-o>h,
 
