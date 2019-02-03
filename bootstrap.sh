@@ -56,6 +56,11 @@ if [ ! -d ~/src/ycmd ]; then
     cd -
 fi
 
+if [ ! -d ~/.local/share/nvim/site/autoload/plug.vim ]; then
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
+
 unamestr=$(uname)
 case $unamestr in
 	"Darwin")
