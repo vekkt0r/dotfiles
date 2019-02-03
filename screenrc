@@ -13,6 +13,8 @@ bell_msg "Bell in window %n"
 register g ^x[kkY
 bind u process g
 
+bindkey -t !w stuff 'wget http://10.20.10.184:8000/'
+
 bind y eval "writebuf" "exec sh -c 'xsel < /tmp/screen-exchange'"
 
 hardstatus alwayslastline

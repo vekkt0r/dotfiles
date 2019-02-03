@@ -1,0 +1,13 @@
+#name : #ifndef XXX; #define XXX; #endif
+# key: once
+# --
+//
+// Copyright (c) 2017 Zenterio AB
+//
+
+#ifndef ${1:`(upcase (file-name-nondirectory (file-name-sans-extension (or (buffer-file-name) ""))))`_HH}
+#define $1
+
+$0
+
+#endif /* $1 */

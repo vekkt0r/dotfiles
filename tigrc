@@ -1,1 +1,17 @@
-bind main B !git rebase -i %(commit)
+set wrap-lines = yes
+#set mouse = yes
+
+bind generic E !git format-patch -1 %(commit)
+bind generic V !git revert %(commit)
+bind generic B @browse_commit %(commit)
+bind main R !git rebase -i %(commit)^
+bind diff R !git rebase -i %(commit)^
+
+# grep causes allocation failure on large repos
+bind generic g none
+
+# Vim-style bindings
+bind generic g none
+bind generic gg move-first-line
+bind main G move-last-line
+bind generic G move-last-line

@@ -1,0 +1,4 @@
+# name: vector
+# key: vec
+# --
+std::vector<${1:}> ${2:};

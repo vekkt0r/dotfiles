@@ -1,0 +1,4 @@
+# name: Etem ILOG
+# key: ilog
+# --
+ILOG_LOG(${1:m_pLogger}, ILogger::${2:DEBUG}, "${3:}");

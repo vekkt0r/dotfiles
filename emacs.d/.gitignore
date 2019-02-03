@@ -1,0 +1,9 @@
+.places
+auto-save-list/
+backups/
+bookmarks
+custom.el~
+elpa/
+history
+ido.last
+recentf

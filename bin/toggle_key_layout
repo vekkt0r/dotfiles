@@ -1,0 +1,12 @@
+#!/bin/bash
+
+current=$(setxkbmap -query | grep layout | awk '{print $2}')
+new="us"
+if [ $current == "us" ]; then
+    new="se"
+fi
+echo "setting layout to $new"
+setxkbmap -layout $new 
+#-option "ctrl:swapcaps"
+#newu=$(echo $new | tr '[:lower:]' '[:upper:]')
+#echo "mykbdlayout:set_text(\"$newu | \")" | awesome-client

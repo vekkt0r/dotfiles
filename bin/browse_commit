@@ -1,0 +1,12 @@
+#!/bin/bash
+
+key=$(git log --pretty=format:'%s' -1 $1 | awk '{print $1}' | sed -e 's/://g')
+echo "Key is $key"
+cpei=$(echo $key | grep -c CPEI)
+if [ $cpei -ne 0 ]; then
+    base_url="https://atlassian.net/browse/"
+else
+    base_url="https://jira.lan/browse/"
+fi
+
+firefox ${base_url}${key}
