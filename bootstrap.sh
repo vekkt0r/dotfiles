@@ -23,7 +23,7 @@ ln -s $PWD/compton.conf ~/.compton.conf
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/radare2rc ~/.radare2rc
 mkdir -p ~/.config/alacritty
-ln -s $PWD/alacritty.conf ~/.config/alacritty/alacritty.conf
+ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s $PWD/nvim ~/.config/nvim
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
