@@ -24,6 +24,7 @@ ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/radare2rc ~/.radare2rc
 mkdir -p ~/.config/alacritty
 ln -s $PWD/alacritty.conf ~/.config/alacritty/alacritty.conf
+ln -s $PWD/nvim ~/.config/nvim
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
