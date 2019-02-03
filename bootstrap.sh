@@ -22,6 +22,8 @@ ln -s $PWD/tmux.conf ~/.tmux.conf
 ln -s $PWD/compton.conf ~/.compton.conf
 ln -s $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/radare2rc ~/.radare2rc
+mkdir -p ~/.config/alacritty
+ln -s $PWD/alacritty.conf ~/.config/alacritty/alacritty.conf
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
