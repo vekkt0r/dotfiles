@@ -493,7 +493,7 @@ awful.rules.rules = {
     { rule = { class = "Zeal" },
       properties = { screen = "DP-1", tag = "tb" } },
     { rule = { class = "libreoffice" },
-      properties = { fullscreen = true } },
+      properties = { fullscreen = false, screen = "DP-1", tag = "tb" } },
     { rule = { class = "one" },
       properties = { screen = "DP-1", tag = "1" } },
 
