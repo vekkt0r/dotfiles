@@ -71,6 +71,7 @@ case $unamestr in
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
 		ln -s $PWD/Xresources ~/.Xresources
-		sudo apt-get install -y zsh autojump silversearcher-ag screen tmux vim git jq
+		sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
+            vim git jq tig
 	;;
 esac
