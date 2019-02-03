@@ -72,7 +72,7 @@ local layouts =
 }
 -- }}}
 --theme.wallpaper = "/usr/share/backgrounds/gnome/Dark_Ivy.jpg"
-    beautiful.get().wallpaper = "/usr/share/backgrounds/solarized-mountains-dark.png"
+    beautiful.get().wallpaper = "~/.config/awesome/themes/blueres/solarized-mountains-dark.png"
 
 -- {{{ Wallpaper
 if beautiful.wallpaper then
@@ -595,6 +595,7 @@ os.execute("runonce.sh compton &")
 --os.execute("xset dpms 600 1800 0")
 --os.execute("xset mouse 1 0")
 -- st layouting factor
-awful.tag.incmwfact(0.20,tags[2]["st"])
+-- Only when multi monitor!
+--awful.tag.incmwfact(0.20,tags[2]["st"])
 -- Thunderbird master factor
 --awful.tag.incmwfact(0.20,tags[1][2])
