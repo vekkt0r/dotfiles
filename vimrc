@@ -49,6 +49,11 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 set runtimepath+=~/src/dotfiles/snippets
 let g:UltiSnipsSnippetDirectories=["~/.vim/UltiSnips", "UltiSnips"]
 
+" TabNine
+let g:ycm_filetype_blacklist = {
+   \ 'gitcommit': 1
+   \}
+
 " Stuffs
 set wildignore+=build,*.o,*.k,*.a,*.la,*.d,*.svg,*.png
 set shell=/usr/bin/zsh
