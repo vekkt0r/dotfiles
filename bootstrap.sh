@@ -32,7 +32,7 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
 fi
 
 # Essentials
-sudo apt install -y curl
+#sudo apt install -y curl
 
 if [ ! -f ~/.vim/autoload/pathogen ]; then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
@@ -71,7 +71,19 @@ case $unamestr in
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
 		ln -s $PWD/Xresources ~/.Xresources
-		sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
-            vim git jq tig
+		if [ -f /etc/lsb-release ]; then
+			# Probably Ubuntu
+			sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
+		    vim git jq tig
+		else
+            # Fallback to Fedora
+            # TODO: Check actual dist
+			sudo dnf install -y zsh autojump the_silver_searcher screen tmux vim git jq tig xclip
+
+            # only for numix-solarized
+            sudo dnf install -y ruby-devel redhat-rpm-config glib2-devel gdk-pixbuf2-devel inkscape gtk-murrine-engine google-roboto-mono-fonts google-roboto-fonts
+            sudo gem install sass
+            cd ~/src && git clone https://github.com/Ferdi265/numix-solarized-gtk-theme.git && cd numix-solarized-grk-theme && sudo make THEME=SolarizedDarkBlue install
+		fi
 	;;
 esac
