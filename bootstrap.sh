@@ -78,7 +78,7 @@ case $unamestr in
 		else
             # Fallback to Fedora
             # TODO: Check actual dist
-			sudo dnf install -y zsh autojump the_silver_searcher screen tmux vim git jq tig xclip
+			sudo dnf install -y zsh autojump the_silver_searcher screen tmux vim git jq tig xclip slock
 
             # only for numix-solarized
             sudo dnf install -y ruby-devel redhat-rpm-config glib2-devel gdk-pixbuf2-devel inkscape gtk-murrine-engine google-roboto-mono-fonts google-roboto-fonts
