@@ -260,7 +260,8 @@ awful.screen.connect_for_each_screen(function(s)
     -- Systray
     local systray = wibox.widget.systray()
     systray:set_base_size(20)
-    local systray_wrap = wibox.layout.margin(systray, 0,0,6,5)
+    local systray_wrap = wibox.container.margin(systray, 5,0,9,5)
+    systray_wrap.opacity = 0.5
 
     -- Add widgets to the wibox
     s.mywibox:setup {
