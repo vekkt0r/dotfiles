@@ -343,7 +343,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Mod1"    }, "space", function () awful.util.spawn_with_shell("toggle_key_layout") end),
     --awful.key({ "Mod1"            }, "space", function () awful.util.spawn_with_shell("dmenu_extended_run") end),
     awful.key({ "Mod1", "Shift"   }, "4",     function () awful.util.spawn_with_shell("sleep 0.4; cd ~/Pictures; scrot -s '%Y-%m-%d_$wx$h.png'") end),
-    awful.key({ modkey, "Mod1"    }, "l",     function () awful.util.spawn_with_shell("gnome-screensaver-command -l") end),
+    awful.key({ modkey, "Mod1"    }, "l",     function () awful.util.spawn_with_shell("xset dpms force suspend; slock") end),
     awful.key({ modkey, "Control" }, "n",     awful.client.restore),
 
     awful.key({modkey,            }, "F1",     function () awful.screen.focus(1) end),
