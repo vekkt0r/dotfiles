@@ -1,7 +1,7 @@
 syntax on
 let mapleader = ','
-set ts=4
-set shiftwidth=4
+set ts=2
+set shiftwidth=2
 set expandtab
 set t_Co=256
 set laststatus=2
