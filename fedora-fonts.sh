@@ -5,3 +5,7 @@ sudo su -c 'dnf install https://download1.rpmfusion.org/free/fedora/rpmfusion-fr
 sudo dnf copr enable dawid/better_fonts
 #Install packages:
 sudo dnf install fontconfig-enhanced-defaults fontconfig-font-replacements
+
+#identify lcd panel type
+#http://www.lagom.nl/lcd-test/subpixel.php
+#set dpi in .Xresources
