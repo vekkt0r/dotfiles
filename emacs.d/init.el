@@ -74,7 +74,6 @@
      flx
      f
      flx-ido
-     dired-details
      yasnippet
      smartparens
      ido-vertical-mode
