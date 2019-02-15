@@ -18,8 +18,8 @@ let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
 call plug#end()
 
 let mapleader = ','
-set ts=4
-set shiftwidth=4
+set ts=2
+set shiftwidth=2
 set expandtab
 set t_Co=256
 set laststatus=2
@@ -36,7 +36,7 @@ map <Leader>w :%s/\s\+$//e<Return>
 " Buffer navigation
 map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
-map <Leader>d :bprev<Return>:bd#<Return>
+map <Leader>d :bd<Return>
 map <Leader>f :b#<Return>
 
 " fzf
