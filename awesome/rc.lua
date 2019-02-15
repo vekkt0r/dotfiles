@@ -218,7 +218,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 -- Define a tag table which hold all screen tags.
 tags = {
    names = {1, "tb", "ff", "im", 5,6,7,8,9},
-   layouts = {layouts[1], layouts[4], layouts[4], layouts[2], layouts[1],
+   layouts = {layouts[2], layouts[4], layouts[4], layouts[2], layouts[1],
               layouts[1],layouts[1],layouts[1],layouts[1],}
 }
 tags2 = {
@@ -259,9 +259,9 @@ awful.screen.connect_for_each_screen(function(s)
 
     -- Systray
     local systray = wibox.widget.systray()
-    systray:set_base_size(20)
-    local systray_wrap = wibox.container.margin(systray, 5,0,9,5)
     systray_wrap.opacity = 0.5
+    systray:set_base_size(25)
+    local systray_wrap = wibox.container.margin(systray, 5,0,9,5)
 
     -- Add widgets to the wibox
     s.mywibox:setup {
@@ -343,7 +343,7 @@ globalkeys = awful.util.table.join(
     awful.key({ modkey, "Mod1"    }, "space", function () awful.util.spawn_with_shell("toggle_key_layout") end),
     --awful.key({ "Mod1"            }, "space", function () awful.util.spawn_with_shell("dmenu_extended_run") end),
     awful.key({ "Mod1", "Shift"   }, "4",     function () awful.util.spawn_with_shell("sleep 0.4; cd ~/Pictures; scrot -s '%Y-%m-%d_$wx$h.png'") end),
-    awful.key({ modkey, "Mod1"    }, "l",     function () awful.util.spawn_with_shell("xset dpms force suspend; slock") end),
+    awful.key({ modkey, "Mod1"    }, "l",     function () awful.util.spawn_with_shell("slock") end),
     awful.key({ modkey, "Control" }, "n",     awful.client.restore),
 
     awful.key({modkey,            }, "F1",     function () awful.screen.focus(1) end),
