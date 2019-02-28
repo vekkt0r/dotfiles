@@ -30,8 +30,9 @@ set completeopt-=preview
 let @y = 'xx$3bd$i=yx'
 let @n = 'i# ^[$hd$a is not set^['
 
-" Trailing whitespace cleanup
+" Trailing whitespace cleanup and hilight
 map <Leader>w :%s/\s\+$//e<Return>
+set list
 
 " Buffer navigation
 map <Leader>a :bprev<Return>
@@ -44,6 +45,7 @@ map <Leader>t :GFiles<Return>
 map <Leader>T :Files<Return>
 map <Leader>b :Buffers<Return>
 map <Leader>A :Ag 
+map <Leader>L :BLines 
 
 " GIT
 map <Leader>l :te tig %<Return>i
@@ -62,6 +64,9 @@ let g:UltiSnipsSnippetDirectories = ['mySnippets', 'UltiSnips']
 let g:clang_format#command = 'clang-format-5.0'
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+" Jump to last known position when opening file
+autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Solarized theme
 set termguicolors
