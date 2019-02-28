@@ -51,7 +51,8 @@ map <Leader>L :BLines
 map <Leader>l :te tig %<Return>i
 map <Leader>B :te tig blame +<C-r>=line('.')<Return> %<Return>i
 map <Leader>D :te git diff %<Return>i
-map <Leader>z :!zcompiz %<Return>
+map <Leader>z :!codemapper map %<Return>
+map <Leader>V :te git checkout -p %<Return>i
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
