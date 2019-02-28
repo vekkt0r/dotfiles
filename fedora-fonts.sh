@@ -8,4 +8,5 @@ sudo dnf install fontconfig-enhanced-defaults fontconfig-font-replacements
 
 #identify lcd panel type
 #http://www.lagom.nl/lcd-test/subpixel.php
+#query current dpi: xdpyinfo | grep -B 2 resolution
 #set dpi in .Xresources
