@@ -1,0 +1,7 @@
+/* Fix SolarizedDark GTK theme issues with scrollbar */
+:root{
+  scrollbar-face-color: rgb(210, 210, 210); /* Firefox 63 compatibility */
+  scrollbar-track-color: rgb(46,54,69); /* Firefox 63 compatibility */
+  scrollbar-color: rgb(210, 210, 210) rgb(46,54,69);
+  scrollbar-width: thin;
+}
