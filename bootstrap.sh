@@ -25,6 +25,7 @@ ln -s $PWD/radare2rc ~/.radare2rc
 mkdir -p ~/.config/alacritty
 ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s $PWD/nvim ~/.config/nvim
+ln -s $PWD/quiltrc ~/.quiltrc
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
