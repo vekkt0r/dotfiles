@@ -3,6 +3,8 @@
 # We want to use our own rc, move existing one to avoid error
 mv ~/.bashrc ~/.bashrc.org
 
+mkdir -p ~/bin
+
 ln -s $PWD/screenrc ~/.screenrc
 ln -s $PWD/vimrc ~/.vimrc
 ln -s $PWD/zshrc ~/.zshrc
@@ -26,6 +28,7 @@ mkdir -p ~/.config/alacritty
 ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s $PWD/nvim ~/.config/nvim
 ln -s $PWD/quiltrc ~/.quiltrc
+ln -s $PWD/bin/runonce.sh ~/bin/runonce.sh
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
