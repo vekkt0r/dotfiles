@@ -17,3 +17,9 @@ Start to get profile directory, then about:support to check Profile dir
     ln -s ~/src/dotfiles/firefox/userContent.css ~/.mozilla/firefox/*.default/chrome/userContent.css
 
 Install tree-style-tabs and copy css from dotfiles dir
+
+Make text fields light when using SolarizedDark GTK theme
+
+    about:config
+    Right click -> New
+    widget.content.gtk-theme-override = Adwaita
