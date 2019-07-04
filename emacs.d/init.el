@@ -85,7 +85,7 @@
      solarized-theme
      company
      diff-hl
-     lsp-mode
+     ;;lsp-mode
      )))
 
 (condition-case nil
@@ -115,16 +115,16 @@
 ;; Setup extensions
 (eval-after-load 'ido '(require 'setup-ido))
 (eval-after-load 'org '(require 'setup-org))
-(eval-after-load 'dired '(require 'setup-dired))
+;;(eval-after-load 'dired '(require 'setup-dired))
 (eval-after-load 'magit '(require 'setup-magit))
 (require 'setup-rgrep)
 (require 'setup-hippie)
 (require 'setup-yasnippet)
-(require 'setup-perspective)
+;;(require 'setup-perspective)
 (require 'setup-ffip)
 (require 'setup-flycheck)
 ;;(require 'setup-rtags)
-(require 'setup-cquery)
+;;(require 'setup-cquery)
 (require 'setup-line)
 (require 'setup-tmpfiles)
 (require 'setup-whitespace)
