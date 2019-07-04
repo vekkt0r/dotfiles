@@ -8,12 +8,14 @@ Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'rhysd/vim-clang-format'
 Plug 'iCyMind/NeoSolarized'
+Plug 'scrooloose/nerdcommenter'
+Plug 'sagarrakshe/toggle-bool'
 
 " https://github.com/nickdiego/compiledb
 
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-3.8/lib/libclang.so'
-let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
+let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
+"let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
 
 call plug#end()
 
@@ -34,17 +36,22 @@ let @n = 'i# ^[$hd$a is not set^['
 map <Leader>w :%s/\s\+$//e<Return>
 set list
 
+" Relative numbering, not for Term
+set number relativenumber
+au TermOpen * setlocal nonumber norelativenumber
+
 " Buffer navigation
 map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b#<Return>
+map <Leader>H :e %:r.h<Return>
 
 " fzf
 map <Leader>t :GFiles<Return>
 map <Leader>T :Files<Return>
 map <Leader>b :Buffers<Return>
-map <Leader>A :Ag 
+map <Leader>A :Ag <C-r><C-w>
 map <Leader>L :BLines 
 
 " GIT
@@ -53,6 +60,9 @@ map <Leader>B :te tig blame +<C-r>=line('.')<Return> %<Return>i
 map <Leader>D :te git diff %<Return>i
 map <Leader>z :!codemapper map %<Return>
 map <Leader>V :te git checkout -p %<Return>i
+
+" Toggle word
+map <Leader>T :ToggleBool<Return>
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -65,6 +75,9 @@ let g:UltiSnipsSnippetDirectories = ['mySnippets', 'UltiSnips']
 let g:clang_format#command = 'clang-format-5.0'
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+" MultiMarkdown -> Markdown mode
+autocmd BufNewFile,BufRead *.mmd set filetype=markdown
 
 " Jump to last known position when opening file
 autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
