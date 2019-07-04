@@ -217,7 +217,7 @@ screen.connect_signal("property::geometry", set_wallpaper)
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-   names = {1, "tb", "ff", "im", 5,6,7,8,9},
+   names = {"do", "ref", "ff", "im", 5,6,7,8,9},
    layouts = {layouts[2], layouts[4], layouts[4], layouts[2], layouts[1],
               layouts[1],layouts[1],layouts[1],layouts[1],}
 }
@@ -344,6 +344,8 @@ globalkeys = awful.util.table.join(
     --awful.key({ "Mod1"            }, "space", function () awful.util.spawn_with_shell("dmenu_extended_run") end),
     awful.key({ "Mod1", "Shift"   }, "4",     function () awful.util.spawn_with_shell("sleep 0.4; cd ~/Pictures; scrot -s '%Y-%m-%d_$wx$h.png'") end),
     awful.key({ modkey, "Mod1"    }, "l",     function () awful.util.spawn_with_shell("slock") end),
+    awful.key({ modkey, "Mod1"    }, "p",     function () awful.util.spawn_with_shell("passmenu") end),
+    awful.key({ "Mod1"            }, "space", function () awful.util.spawn_with_shell("dmenu_extended_run") end),
     awful.key({ modkey, "Control" }, "n",     awful.client.restore),
 
     awful.key({modkey,            }, "F1",     function () awful.screen.focus(1) end),
@@ -592,7 +594,7 @@ os.execute("runonce.sh unity-settings-daemon &")
 os.execute("runonce.sh compton &")
 --os.execute("runonce.sh notify-listener")
 --os.execute("runonce.sh owncloud")
---os.execute("runonce.sh xbanish")
+os.execute("runonce.sh xbanish &")
 --os.execute("xset dpms 600 1800 0")
 --os.execute("xset mouse 1 0")
 -- st layouting factor
