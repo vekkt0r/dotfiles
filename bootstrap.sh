@@ -48,7 +48,7 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
     git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
     git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips 
     git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
-    ln -s ~/src/dotfiles/snippets/ultisnips ~/.vim/ultisnips
+    ln -s ~/src/dotfiles/snippets/ultisnips ~/.vim/UltiSnips
 fi
 
 if [ ! -d ~/src/ycmd ]; then
@@ -75,6 +75,7 @@ case $unamestr in
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
 		ln -s $PWD/Xresources ~/.Xresources
+		gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
 		if [ -f /etc/lsb-release ]; then
 			# Probably Ubuntu
 			sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
