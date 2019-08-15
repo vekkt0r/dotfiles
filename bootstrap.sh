@@ -29,6 +29,7 @@ ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
 ln -s $PWD/nvim ~/.config/nvim
 ln -s $PWD/quiltrc ~/.quiltrc
 ln -s $PWD/bin/runonce.sh ~/bin/runonce.sh
+ln -s $PWD/kitty.conf ~/.config/kitty/kitty.conf
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
