@@ -16,6 +16,7 @@ ln -s $PWD/gdbinit.simple ~/.gdbinit
 ln -s $PWD/vimperatorrc ~/.vimperatorrc
 mkdir -p ~/.ssh/
 ln -s $PWD/ssh_config ~/.ssh/config
+ln -s $PWD/ssh_rc ~/.ssh/rc
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/tigrc ~/.tigrc
 mkdir -p ~/.config/mc
