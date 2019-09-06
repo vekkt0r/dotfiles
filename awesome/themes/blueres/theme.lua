@@ -60,7 +60,7 @@ theme.taglist_fg_empty = "#555555"
 theme.taglist_fg_focus = theme.fg_normal
 theme.taglist_bg_focus = "#383f4d"
 theme.taglist_fg_occupied = theme.fg_normal
-theme.taglist_font = "FontAwesome bold 12"
+theme.taglist_font = "Roboto Mono Medium 13"
 -- }}}
 
 -- {{{ Notifications
