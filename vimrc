@@ -64,6 +64,14 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 " But not for gitcommit
 autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0])
 
+" Add format option 'w' to add trailing white space, indicating that paragraph
+" " continues on next line. This is to be used with mutt's 'text_flowed'
+" option.
+augroup mail_trailing_whitespace " {
+  autocmd!
+  autocmd FileType mail setlocal formatoptions+=w
+augroup END " }
+
 " Avoid confusing MatchParen hilight
 hi MatchParen cterm=bold ctermbg=none ctermfg=red
 
