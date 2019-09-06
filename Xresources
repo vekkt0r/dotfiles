@@ -2,7 +2,7 @@ Emacs.toolBar: -1
 !Emacs.FontBackend: xft
 !Xft.embolden: true
 ! Xft settings
-Xft.dpi:        90
+!Xft.dpi:        90
 Xft.antialias:  true
 Xft.rgba:       rgb
 Xft.hinting:    true
