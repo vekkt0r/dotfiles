@@ -32,6 +32,9 @@ set completeopt-=preview
 let @y = 'xx$3bd$i=yx'
 let @n = 'i# ^[$hd$a is not set^['
 
+" Convenience macro for w3m
+map <Leader>W :te w3m %<Return>i
+
 " Trailing whitespace cleanup and hilight
 map <Leader>w :%s/\s\+$//e<Return>
 set list
