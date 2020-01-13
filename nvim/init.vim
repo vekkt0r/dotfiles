@@ -35,6 +35,8 @@ set shiftwidth=2
 set expandtab
 set t_Co=256
 set laststatus=2
+" always center scroll, better buffer switching
+set scrolloff=999
 " Deoplete keep preview window closed
 set completeopt-=preview
 
