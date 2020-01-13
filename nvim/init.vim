@@ -32,6 +32,9 @@ set completeopt-=preview
 let @y = 'xx$3bd$i=yx'
 let @n = 'i# ^[$hd$a is not set^['
 
+" Build current file with F10
+map <F10> :!build.sh %:p:h<Return><Return>
+
 " Convenience macro for w3m
 map <Leader>W :te w3m %<Return>i
 
@@ -52,7 +55,7 @@ map <Leader>H :e %:r.h<Return>
 
 " fzf
 map <Leader>t :GFiles<Return>
-map <Leader>T :Files<Return>
+map <Leader>F :Files<Return>
 map <Leader>b :Buffers<Return>
 map <Leader>A :Ag <C-r><C-w>
 map <Leader>L :BLines 
@@ -62,6 +65,7 @@ map <Leader>l :te tig %<Return>i
 map <Leader>B :te tig blame +<C-r>=line('.')<Return> %<Return>i
 map <Leader>D :te git diff %<Return>i
 map <Leader>z :!codemapper map %<Return>
+map <Leader>S :te tig status<Return>i
 map <Leader>V :te git checkout -p %<Return>i
 
 " Toggle word
