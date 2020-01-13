@@ -1,7 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-clang'
+Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-ultisnips'
+Plug 'roxma/nvim-yarp'
 Plug '~/src/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
@@ -10,14 +11,21 @@ Plug 'rhysd/vim-clang-format'
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sagarrakshe/toggle-bool'
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
-" https://github.com/nickdiego/compiledb
-
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#clang#libclang_path = '/usr/lib/llvm-6.0/lib/libclang.so.1'
-"let g:deoplete#sources#clang#clang_header = '/usr/lib/llvm-3.8/lib/clang'
+let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
+let g:LanguageClient_serverCommands = {
+  \ 'cpp': ['clangd-6.0', '-enable-snippets'],
+  \ }
 
 call plug#end()
+
+" enable ncm2 for all buffers
+autocmd BufEnter * call ncm2#enable_for_buffer()
+set completeopt=noinsert,menuone,noselect
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+let g:LanguageClient_hasSnippetSupport = 1
 
 let mapleader = ','
 set ts=2
@@ -82,6 +90,13 @@ let g:UltiSnipsSnippetDirectories = ['mySnippets', 'UltiSnips']
 let g:clang_format#command = 'clang-format-5.0'
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+
+" LanguageClient
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
+" Or map each action separately
+" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
 
 " MultiMarkdown -> Markdown mode
 autocmd BufNewFile,BufRead *.mmd set filetype=markdown
