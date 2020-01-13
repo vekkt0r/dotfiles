@@ -11,6 +11,8 @@ Plug 'rhysd/vim-clang-format'
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdcommenter'
 Plug 'sagarrakshe/toggle-bool'
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
 let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
