@@ -32,12 +32,15 @@ ZSH_CUSTOM=$HOME/src/dotfiles/oh-my-zsh-custom/
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git history-substring-search fzf autojump pass tmux pip gitfast docker)
+plugins=(git history-substring-search fzf autojump pass tmux pip gitfast docker ssh-agent)
+
+zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+zstyle ':completion:*:ssh:*' hosts off
 export PATH=$HOME/bin:/opt/emacs/bin:/usr/local/bin:$PATH
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
