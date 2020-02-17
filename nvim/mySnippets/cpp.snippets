@@ -114,33 +114,6 @@ snippet dstr "Debug print string"
 KNOTE("${1} %s", ${2}.c_str());
 endsnippet
 
-snippet zp "Zenterio Copyright"
-//
-// Copyright (c) 2018 Zenterio AB
-//
-endsnippet
-
-snippet cla "An entire .h generator" b
-//
-// Copyright (c) 2018 Zenterio AB
-//
-
-#ifndef ${2:`!v substitute(vim_snippets#Filename('$1_H','ClassName'),'.*','\U&\E','')`}
-#define $2
-
-class ${1:`!v substitute(substitute(vim_snippets#Filename('$1','ClassName'),'^.','\u&',''), '_\(\w\)', '\u\1', 'g')`}
-{
-public:
-	$1();
-	virtual ~$1();
-
-private:
-	$3
-};
-
-#endif // $2
-endsnippet
-
 snippet fnc "Basic c++ doxygen function template" b
 /**
 * \brief ${4:brief}
