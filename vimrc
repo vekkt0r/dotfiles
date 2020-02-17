@@ -75,13 +75,6 @@ augroup END " }
 " Avoid confusing MatchParen hilight
 hi MatchParen cterm=bold ctermbg=none ctermfg=red
 
-" ConqueGdb setup
-let g:ConqueGdb_GdbExe = "arm-linux-gnueabihf-gdb"
-let g:ConqueGdb_Leader = '\'
-let g:ConqueTerm_CWInsert = 1
-let g:ConqueTerm_InsertOnEnter = 1
-let g:ConqueTerm_CloseOnEnd = 1
-
 " Should be enabled for nerdcommenter
 filetype plugin on
 

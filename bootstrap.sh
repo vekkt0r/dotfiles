@@ -46,7 +46,6 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
     git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
     git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
     git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
-    git clone https://github.com/vim-scripts/Conque-GDB.git ~/.vim/bundle/Conque-GDB
     git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
     git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips 
     git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
