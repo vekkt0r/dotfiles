@@ -5,3 +5,5 @@
    out = log @{u}..
 [push]
 	default = simple
+[pager]
+	branch = false
