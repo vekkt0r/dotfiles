@@ -1,0 +1,50 @@
+set sleep_time=0
+set smtp_authenticators = "login"
+set ssl_force_tls = yes
+set mailcap_path = "~/.mutt/mailcap"
+
+# no + wrap indicators
+set markers=no
+
+# helper for launching urls
+macro index,pager \cb "<pipe-message> urlscan<Enter>"
+
+# no wait for key after running urlscan
+set wait_key=no
+
+# Threading
+set sort="threads"
+set strict_threads="yes"
+set sort_browser="reverse-date"
+set sort_aux="last-date-received"
+unset collapse_unread
+bind index - collapse-thread
+bind index _ collapse-all
+
+auto_view text/html                                      # view html automatically
+alternative_order text/plain text/enriched text/html     # save html for last
+
+set index_format="%4C %Z %[%b %d %H:%M] %-15.15L %s"
+
+# reply options
+set text_flowed = yes
+set fast_reply=yes
+set include=yes
+
+# hilight all addresses
+alternates ^adam.engstrom
+
+folder-hook 'work' 'source ~/.mutt/work'
+
+macro index 1 "<change-folder> =../work/Inbox/<enter>"
+macro index 2 "<change-folder> =review<enter>"
+
+macro index G "!mbsync -a^M" "Update through mbsync"
+set move = no
+
+# shortcuts
+bind pager j next-line
+bind pager k previous-line
+
+source ~/.mutt/work
+source ~/.mutt/mutt-colors-solarized-dark-256.muttrc

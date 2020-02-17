@@ -1,0 +1,8 @@
+text/html; w3m -I %{charset} -T text/html; copiousoutput;
+application/pdf; evince %s &>/dev/null
+application/msword; catdoc | less %
+application/vnd.openxmlformats-officedocument.wordprocessingml.document; catdoc | less %
+image/JPG; feh -F %s
+image/jpeg; feh -F %s
+image/png; feh -F %s
+image/gif; feh -F %s

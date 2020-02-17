@@ -31,6 +31,9 @@ ln -s $PWD/nvim ~/.config/nvim
 ln -s $PWD/quiltrc ~/.quiltrc
 ln -s $PWD/bin/runonce.sh ~/bin/runonce.sh
 ln -s $PWD/kitty.conf ~/.config/kitty/kitty.conf
+mkdir -p ~/.mutt
+ln -s $PWD/muttrc ~/.mutt/muttrc
+ln -s $PWD/mutt_mailcap ~/.mutt/mailcap
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
