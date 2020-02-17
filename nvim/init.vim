@@ -1,6 +1,8 @@
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'ncm2/ncm2'
+Plug 'ncm2/ncm2-bufword'
+Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'roxma/nvim-yarp'
 Plug '~/src/fzf'
@@ -15,9 +17,10 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 
-let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
+"let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:LanguageClient_serverCommands = {
   \ 'cpp': ['clangd-6.0', '-enable-snippets'],
+  \ 'python': ['/home/aengstrom/.local/bin/pyls'],
   \ }
 
 call plug#end()
@@ -63,7 +66,7 @@ map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b#<Return>
-map <Leader>H :e %:r.h<Return>
+map <Leader>H :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<Return>
 
 " fzf
 map <Leader>t :GFiles<Return>
@@ -96,11 +99,7 @@ autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 
 " LanguageClient
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-" Or map each action separately
-" nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-" nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-" nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+nnoremap <Leader>m :call LanguageClient_contextMenu()<CR>
 
 " MultiMarkdown -> Markdown mode
 autocmd BufNewFile,BufRead *.mmd set filetype=markdown
