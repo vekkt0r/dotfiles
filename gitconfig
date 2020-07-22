@@ -7,3 +7,7 @@
 	default = simple
 [pager]
 	branch = false
+[merge]
+	tool = vimdiff
+[mergetool "vimdiff"]
+	path = nvim
