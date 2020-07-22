@@ -50,18 +50,9 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
     git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
     git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
     git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
-    git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips 
+    git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
     git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
     ln -s ~/src/dotfiles/snippets/ultisnips ~/.vim/UltiSnips
-fi
-
-if [ ! -d ~/src/ycmd ]; then
-	mkdir -p ~/.tmux/plugins
-    git clone https://github.com/Valloric/ycmd.git ~/src/ycmd
-    cd ~/src/ycmd
-    git submodule update --init --recursive
-    ./build.py
-    cd -
 fi
 
 if [ ! -d ~/.local/share/nvim/site/autoload/plug.vim ]; then
@@ -72,9 +63,26 @@ fi
 unamestr=$(uname)
 case $unamestr in
 	"Darwin")
+    brew=$(which brew)
+    if [ $? -ne 0 ]; then
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+    brew cask install alfred
+    brew cask install docker
+    brew cask install firefox
+    brew cask install homebrew/cask-fonts/font-hack
+    brew cask install spotify
+    brew install ag
+    brew install autojump
+    brew install bluetoothconnector
+    brew install fzf
+    brew install python
+    brew install tig
+    brew install tmux
+    brew install vim
     	mkdir -p ~/Library/KeyBindings/
-    	ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict	
-        ln -s $PWD/USMD.bundle ±/Library/Keyboard\ Layouts/USMD.bundle
+    	ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+      ln -s $PWD/USMD.bundle ±/Library/Keyboard\ Layouts/USMD.bundle
 	;;
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
