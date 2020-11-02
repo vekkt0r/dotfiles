@@ -5,7 +5,7 @@ Plug 'ncm2/ncm2-bufword'
 Plug 'ncm2/ncm2-path'
 Plug 'ncm2/ncm2-ultisnips'
 Plug 'roxma/nvim-yarp'
-Plug '~/src/fzf'
+Plug '/usr/local/opt/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
@@ -19,18 +19,23 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 
 "let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:LanguageClient_serverCommands = {
-  \ 'cpp': ['clangd-6.0', '-enable-snippets'],
-  \ 'python': ['/home/aengstrom/.local/bin/pyls'],
+  \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
+  \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
+  \ 'python': ['/usr/local/bin/pyls'],
   \ }
 
 call plug#end()
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
-set completeopt=noinsert,menuone,noselect
+"set completeopt=menuone,noinsert,noselect,preview
+set completeopt=menuone,noinsert,noselect
+"inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
+"let g:LanguageClient_userVirtualText = 0
 let g:LanguageClient_hasSnippetSupport = 1
+let g:LanguageClient_selectionUI = 'FZF'
 
 let mapleader = ','
 set ts=2
@@ -41,7 +46,7 @@ set laststatus=2
 " always center scroll, better buffer switching
 set scrolloff=999
 " Deoplete keep preview window closed
-set completeopt-=preview
+"set completeopt-=preview
 
 " Kconfig macros
 let @y = 'xx$3bd$i=yx'
@@ -66,7 +71,8 @@ map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bd<Return>
 map <Leader>f :b#<Return>
-map <Leader>H :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<Return>
+map <Leader>H :e %:p:s,.hh$,.X123X,:s,.cc$,.hh,:s,.X123X$,.cc,<Return>
+"map <Leader>H :e %:p:s,.h$,.X123X,:s,.cpp$,.h,:s,.X123X$,.cpp,<Return>
 
 " fzf
 let g:fzf_preview_window = ''
@@ -83,6 +89,9 @@ map <Leader>D :te git diff %<Return>i
 map <Leader>z :!codemapper map %<Return>
 map <Leader>S :te tig status<Return>i
 map <Leader>V :te git checkout -p %<Return>i
+
+" Smart semicolon
+inoremap <Leader>; <C-o>A;<Esc>
 
 " Toggle word
 map <Leader>T :ToggleBool<Return>
@@ -102,13 +111,14 @@ if &diff
 endif
 
 " ClangFormat setup
-let g:clang_format#command = 'clang-format-5.0'
+let g:clang_format#command = 'clang-format'
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
 autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
 autocmd FileType python nnoremap <buffer><Leader>cf :silent !black -S %<CR><CR>
 
 " LanguageClient
 nnoremap <Leader>m :call LanguageClient_contextMenu()<CR>
+nnoremap <Leader>c :call LanguageClient_textDocument_codeAction()<CR>
 
 " MultiMarkdown -> Markdown mode
 autocmd BufNewFile,BufRead *.mmd set filetype=markdown
