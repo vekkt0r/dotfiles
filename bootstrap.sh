@@ -74,12 +74,16 @@ case $unamestr in
     brew cask install spotify
     brew install ag
     brew install autojump
+    brew install binwalk
     brew install bluetoothconnector
+    brew install cmake
+    #brew install --HEAD universal-ctags/universal-ctags/universal-ctags
     brew install fzf
     brew install python
     brew install tig
     brew install tmux
     brew install vim
+    brew install nvim
     	mkdir -p ~/Library/KeyBindings/
     	ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
       ln -s $PWD/USMD.bundle ±/Library/Keyboard\ Layouts/USMD.bundle
