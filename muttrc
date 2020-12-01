@@ -32,7 +32,7 @@ set fast_reply=yes
 set include=yes
 
 # hilight all addresses
-alternates ^adam.engstrom
+#alternates ^my.address
 
 folder-hook 'work' 'source ~/.mutt/work'
 
