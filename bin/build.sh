@@ -4,7 +4,7 @@
 # - will set tmux environment var and spawn new split window performing
 #   make local_all
 #
-box=5202
+box="Boxname"
 
 find_make () {
   path="$1"
@@ -28,7 +28,7 @@ if [ "$#" -ne 0 ]; then
 fi
 
 if [ -z ${build_dir} ]; then
-  bootimage=$(readlink -f /var/www/html/aengstrom/${box})
+  bootimage=$(readlink -f /var/www/html/${box})
   build_dir=$(dirname ${bootimage})/../../
 else
   target="local_all"

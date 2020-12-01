@@ -17,14 +17,14 @@ keyboard() {
     echo -n "Enter text: "
     read text
     unset IFS
-    commands=$(python ~/script/dt-keyboard.py "$text" $1)
+    commands=$(python ~/script/keyboard.py "$text" $1)
     for cmd in $commands ; do
         cmd $cmd
     done
 }
 
 run_macro () {
-    action=$(echo -e "shrek\nloop\ncatflap\nitv\nbbc\nondemand\nfreesat\nhome" | fzf)
+    action=$(echo -e "loop" | fzf)
     case $action in
         "loop")
           while [ 1 ]; do
@@ -33,48 +33,6 @@ run_macro () {
             cmd KEY_OK
             sleep 130
           done 
-          ;;
-        "shrek")
-            cmd KEY_DOWN
-            cmd KEY_DOWN
-            cmd KEY_DOWN
-            cmd KEY_DOWN
-            cmd KEY_DOWN
-            sleep 1
-            cmd KEY_DOWN
-            cmd KEY_DOWN
-            cmd KEY_RIGHT
-            cmd KEY_RIGHT
-            cmd KEY_RIGHT
-            sleep 1
-            cmd KEY_OK
-            ;;
-        "catflap")
-            # catflap
-            cmd KEY_RED
-            cmd KEY_GREEN
-            cmd KEY_BLUE
-            cmd KEY_YELLOW
-            # Right
-            cmd KEY_GREEN
-            cmd KEY_RED
-            cmd KEY_YELLOW
-            cmd KEY_BLUE
-            ;;
-        "itv")
-            ssh VIP5202 "echo 192 > /dev/kbgen"
-            ;;
-        "bbc")
-            ssh VIP5202 "echo 191 > /dev/kbgen"
-            ;;
-        "ondemand")
-            ssh VIP5202 "echo 193 > /dev/kbgen"
-          ;;
-        "home")
-            ssh VIP5202 "echo 102 > /dev/kbgen"
-          ;;
-        "freesat")
-            ssh VIP5202 "toish as loaduri http://localhost:10000/portal/index.html whitelist"
           ;;
         *)
             echo "Unknown command $action" ;;
