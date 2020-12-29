@@ -84,9 +84,10 @@ case $unamestr in
     brew install tmux
     brew install vim
     brew install nvim
-    	mkdir -p ~/Library/KeyBindings/
-    	ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
-      ln -s $PWD/USMD.bundle ±/Library/Keyboard\ Layouts/USMD.bundle
+    mkdir -p ~/Library/KeyBindings/
+    ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
+    ln -s $PWD/USMD.bundle ~/Library/Keyboard\ Layouts/USMD.bundle
+    ln -s $PWD/hammerspoon ~/.hammerspoon
 	;;
 	"Linux")
 		ln -s $PWD/awesome ~/.config/awesome
