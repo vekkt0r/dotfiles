@@ -1,0 +1,1 @@
+../bitstamp.last.10s.sh
