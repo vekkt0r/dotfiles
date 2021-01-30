@@ -12,12 +12,12 @@ Plug 'SirVer/ultisnips'
 Plug 'rhysd/vim-clang-format'
 Plug 'iCyMind/NeoSolarized'
 Plug 'scrooloose/nerdcommenter'
-Plug 'sagarrakshe/toggle-bool'
+Plug 'vekkt0r/toggle-bool'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
+Plug 'gcaufield/vim-monkey-c'
 
-"let g:LanguageClient_serverStderr = '/tmp/clangd.stderr'
 let g:LanguageClient_serverCommands = {
   \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
   \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
@@ -43,6 +43,9 @@ set shiftwidth=2
 set expandtab
 set t_Co=256
 set laststatus=2
+set hlsearch
+set ignorecase
+set incsearch
 " always center scroll, better buffer switching
 set scrolloff=999
 " Deoplete keep preview window closed
@@ -51,6 +54,10 @@ set scrolloff=999
 " Kconfig macros
 let @y = 'xx$3bd$i=yx'
 let @n = 'i# ^[$hd$a is not set^['
+
+" Leave insert mode with jk / kj
+imap jk <Esc>
+imap kj <Esc>
 
 " Build current file with F10
 map <F10> :!build.sh %:p:h<Return><Return>
