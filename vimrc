@@ -5,6 +5,9 @@ set shiftwidth=2
 set expandtab
 set t_Co=256
 set laststatus=2
+set hlsearch
+set ignorecase
+set incsearch
 
 " Kconfig macros
 let @y = 'xx$3bd$i=ylx'
@@ -16,6 +19,10 @@ map <Leader>a :bprev<Return>
 map <Leader>s :bnext<Return>
 map <Leader>d :bprev<Return>:bd#<Return>
 map <Leader>f :b#<Return>
+
+" Leave insert mode with jk / kj
+imap jk <Esc>
+imap kj <Esc>
 
 " Git convenience
 map <Leader>l :!tig %:p<Return>
