@@ -1,0 +1,9 @@
+snippet println "println .. (println)"
+System.println("${1}");
+endsnippet
+
+snippet for "for var loop (for)"
+for (var ${2:i} = 0; $2 < ${1:count}; ${3:++$2}) {
+	${VISUAL}$0
+}
+endsnippet
