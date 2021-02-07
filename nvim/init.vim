@@ -103,6 +103,14 @@ inoremap <Leader>; <C-o>A;<Esc>
 " Toggle word
 map <Leader>T :ToggleBool<Return>
 
+" NNN launch in current dir
+map <Leader>n :te nnn %:p:h<Return>i
+
+" Fix comments for MonkeyC
+augroup SetCMD
+  autocmd FileType monkeyc let &l:commentstring='// %s'
+augroup END
+
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
