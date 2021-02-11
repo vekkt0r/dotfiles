@@ -41,7 +41,7 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 zstyle ':completion:*:ssh:*' hosts off
-export PATH=$HOME/bin:/opt/emacs/bin:/usr/local/bin:$PATH
+path+=$HOME/bin:/usr/local/bin
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
