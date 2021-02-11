@@ -17,6 +17,7 @@ Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'gcaufield/vim-monkey-c'
+Plug 'axvr/org.vim'
 
 let g:LanguageClient_serverCommands = {
   \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
@@ -134,6 +135,9 @@ autocmd FileType python nnoremap <buffer><Leader>cf :silent !black -S %<CR><CR>
 " LanguageClient
 nnoremap <Leader>m :call LanguageClient_contextMenu()<CR>
 nnoremap <Leader>c :call LanguageClient_textDocument_codeAction()<CR>
+
+" Org mode customization
+let g:org_clean_folds = 1
 
 " MultiMarkdown -> Markdown mode
 autocmd BufNewFile,BufRead *.mmd set filetype=markdown
