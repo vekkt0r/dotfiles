@@ -40,6 +40,11 @@ if [ ! -d ~/.tmux/plugins/tpm ]; then
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
+if [ ! -d ~/.fzf ]; then
+  git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+  ~/.fzf/install --no-update-rc --no-completion --no-key-bindings --no-update-rc
+fi
+
 # Essentials
 #sudo apt install -y curl
 
