@@ -108,7 +108,16 @@ case $unamestr in
 		if [ -f /etc/lsb-release ]; then
 			# Probably Ubuntu
 			sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
-		    vim git jq tig
+		    vim git jq tig python-pip python3-pip
+      pip install neovim
+      pip3 install neovim python-language-server pycodestyle pyflakes black rope
+
+      # Apt version usually very old
+      nv=$(which nvim)
+      if [ $? -ne 0 ]; then
+        curl -sL https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar xz -C ~/bin
+        ln -s ~/bin/nvim-linux64/bin/nvim ~/bin/nvim
+      fi
 		else
             # Fallback to Fedora
             # TODO: Check actual dist
