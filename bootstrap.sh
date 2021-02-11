@@ -20,16 +20,17 @@ ln -s $PWD/ssh_rc ~/.ssh/rc
 ln -s $PWD/gitconfig ~/.gitconfig
 ln -s $PWD/tigrc ~/.tigrc
 mkdir -p ~/.config/mc
-ln -s $PWD/mc ~/.config/mc/ini
+ln -sn $PWD/mc ~/.config/mc
 ln -s $PWD/tmux.conf ~/.tmux.conf
 ln -s $PWD/compton.conf ~/.compton.conf
-ln -s $PWD/emacs.d ~/.emacs.d
+ln -sn $PWD/emacs.d ~/.emacs.d
 ln -s $PWD/radare2rc ~/.radare2rc
 mkdir -p ~/.config/alacritty
 ln -s $PWD/alacritty.yml ~/.config/alacritty/alacritty.yml
-ln -s $PWD/nvim ~/.config/nvim
+ln -sn $PWD/nvim ~/.config/nvim
 ln -s $PWD/quiltrc ~/.quiltrc
 ln -s $PWD/bin/runonce.sh ~/bin/runonce.sh
+mkdir -p ~/.config/kitty
 ln -s $PWD/kitty.conf ~/.config/kitty/kitty.conf
 mkdir -p ~/.mutt
 ln -s $PWD/muttrc ~/.mutt/muttrc
@@ -57,7 +58,7 @@ if [ ! -f ~/.vim/autoload/pathogen ]; then
     git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
     git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
     #git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
-    ln -s ~/src/dotfiles/snippets/ultisnips ~/.vim/UltiSnips
+    ln -sn ~/src/dotfiles/snippets/ultisnips ~/.vim/UltiSnips
 fi
 
 if [ ! -d ~/.local/share/nvim/site/autoload/plug.vim ]; then
@@ -95,9 +96,15 @@ case $unamestr in
     ln -s $PWD/hammerspoon ~/.hammerspoon
 	;;
 	"Linux")
-		ln -s $PWD/awesome ~/.config/awesome
+		ln -sn $PWD/awesome ~/.config/awesome
 		ln -s $PWD/Xresources ~/.Xresources
-		gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+    gs=$(which gsettings)
+    if [ $? -eq 0 ]; then
+      gsettings set org.gnome.nautilus.preferences default-folder-viewer 'list-view'
+    fi
+    if [ `id -u` -eq 0 ]; then
+      sudo () { $@; }
+    fi
 		if [ -f /etc/lsb-release ]; then
 			# Probably Ubuntu
 			sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
