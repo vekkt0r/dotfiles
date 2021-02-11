@@ -34,6 +34,7 @@ ln -s $PWD/kitty.conf ~/.config/kitty/kitty.conf
 mkdir -p ~/.mutt
 ln -s $PWD/muttrc ~/.mutt/muttrc
 ln -s $PWD/mutt_mailcap ~/.mutt/mailcap
+ln -s $PWD/gdbinit.dashboard ~/.gdbinit
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
@@ -43,10 +44,6 @@ fi
 if [ ! -d ~/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-update-rc --no-completion --no-key-bindings --no-update-rc
-fi
-
-if [ ! -e ~/.gdbinit ]; then
-  curl https://git.io/.gdbinit -L > ~/.gdbinit
 fi
 
 # Essentials
