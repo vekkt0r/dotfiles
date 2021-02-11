@@ -12,7 +12,6 @@ ln -Ts $PWD/irssi ~/.irssi
 ln -s $PWD/bashrc ~/.bashrc
 ln -s $PWD/inputrc ~/.inputrc
 ln -Ts $PWD/ncmpcpp ~/.ncmpcpp
-ln -s $PWD/gdbinit.simple ~/.gdbinit
 ln -s $PWD/vimperatorrc ~/.vimperatorrc
 mkdir -p ~/.ssh/
 ln -s $PWD/ssh_config ~/.ssh/config
@@ -44,6 +43,10 @@ fi
 if [ ! -d ~/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
   ~/.fzf/install --no-update-rc --no-completion --no-key-bindings --no-update-rc
+fi
+
+if [ ! -e ~/.gdbinit ]; then
+  curl https://git.io/.gdbinit -L > ~/.gdbinit
 fi
 
 # Essentials
