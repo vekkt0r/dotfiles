@@ -90,6 +90,7 @@ case $unamestr in
     brew install tmux
     brew install vim
     brew install nvim
+    brew install unrtf
     mkdir -p ~/Library/KeyBindings/
     ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
     ln -s $PWD/USMD.bundle ~/Library/Keyboard\ Layouts/USMD.bundle
