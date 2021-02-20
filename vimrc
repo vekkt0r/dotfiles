@@ -24,6 +24,16 @@ map <Leader>f :b#<Return>
 imap jk <Esc>
 imap kj <Esc>
 
+" Insert mode quick navigation
+noremap! <Leader>h <left>
+noremap! <Leader>j <down>
+noremap! <Leader>k <up>
+noremap! <Leader>l <right>
+noremap! <Leader>w <esc>wi
+noremap! <Leader>e <esc>ea
+noremap! <Leader>b <esc>bi
+noremap! <Leader>$ <esc>$a
+
 " Git convenience
 map <Leader>l :!tig %:p<Return>
 map <Leader>B :!git blame %:p<Return>

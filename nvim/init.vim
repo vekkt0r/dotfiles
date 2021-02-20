@@ -101,6 +101,16 @@ map <Leader>V :te git checkout -p %<Return>i
 " Smart semicolon
 inoremap <Leader>; <C-o>A;<Esc>
 
+" Insert mode quick navigation
+noremap! <Leader>h <left>
+noremap! <Leader>j <down>
+noremap! <Leader>k <up>
+noremap! <Leader>l <right>
+noremap! <Leader>w <esc>wi
+noremap! <Leader>e <esc>ea
+noremap! <Leader>b <esc>bi
+noremap! <Leader>$ <esc>$a
+
 " Toggle word
 map <Leader>T :ToggleBool<Return>
 
