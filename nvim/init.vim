@@ -47,6 +47,7 @@ set laststatus=2
 set hlsearch
 set ignorecase
 set incsearch
+set undofile
 " always center scroll, better buffer switching
 set scrolloff=999
 " Deoplete keep preview window closed
