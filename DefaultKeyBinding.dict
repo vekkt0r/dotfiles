@@ -1,5 +1,7 @@
 "@\UF702" = "moveToBeginningOfLine:"; 
+"\UF729" = "moveToBeginningOfLine:";  // home
 "@\UF703" = "moveToEndOfLine:"; 
+"\UF72B" = "moveToEndOfLine:";  // end
 "$@\UF702" = "moveToBeginningOfLineAndModifySelection:"; 
 "$@\UF703" = "moveToEndOfLineAndModifySelection:";
 "~x" = ("insertText:","\033x");
