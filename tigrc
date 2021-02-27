@@ -1,5 +1,6 @@
 set wrap-lines = yes
 set main-view-date-local = true
+set line-graphics = utf-8
 #set mouse = yes
 
 bind generic E !git format-patch -1 %(commit)
