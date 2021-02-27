@@ -80,6 +80,14 @@ snippet printf "printf .. (printf)"
 printf("${1:%s}\n"${1/([^%]|%%)*(%.)?.*/(?2:, :\);)/}$2${1/([^%]|%%)*(%.)?.*/(?2:\);)/}
 endsnippet
 
+snippet coord "x,y,z"
+${1:}.x, $1.y, $1.z
+endsnippet
+
+snippet rpy "roll,pitch,yaw"
+${1:}.roll, $1.pitch, $1.yaw
+endsnippet
+
 snippet st "struct"
 struct ${1:`!p snip.rv = (snip.basename or "name") + "_t"`} {
 	${0:/* data */}
