@@ -18,6 +18,7 @@ Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'gcaufield/vim-monkey-c'
 Plug 'axvr/org.vim'
+Plug 'krzbe/fzf-git-submodules'
 
 let g:LanguageClient_serverCommands = {
   \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
@@ -67,6 +68,12 @@ map <F10> :!build.sh %:p:h<Return><Return>
 " Convenience macro for w3m
 map <Leader>W :te w3m %<Return>i
 
+" Trailing semicolon and exit insert mode
+inoremap <Leader>; <C-o>$<C-o>A;<Esc>
+
+" Open file in same directory convenience
+map <Leader>o :e <C-r>%<C-w><C-w><C-w>
+
 " Trailing whitespace cleanup and hilight
 map <Leader>w :%s/\s\+$//e<Return>
 set list
@@ -90,9 +97,12 @@ map <Leader>F :Files<Return>
 map <Leader>b :Buffers<Return>
 map <Leader>A :Ag <C-r><C-w>
 map <Leader>L :BLines 
+map <Leader>g :BTags<Return>
+map <Leader>C :Components<Return>
 
 " GIT
 map <Leader>l :te tig %<Return>i
+map <Leader>L :te tig --follow %<Return>i
 map <Leader>B :te tig blame +<C-r>=line('.')<Return> %<Return>i
 map <Leader>D :te git diff %<Return>i
 map <Leader>z :!codemapper map %<Return>
