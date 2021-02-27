@@ -2,3 +2,4 @@ control-p:history-search-backward
 control-n:history-search-forward
 set completion-ignore-case on
 "\e[3;5~": kill-word
+set bell-style none
