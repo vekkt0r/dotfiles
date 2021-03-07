@@ -121,7 +121,7 @@ case $unamestr in
         curl -sL https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar xz -C ~/bin
         ln -s ~/bin/nvim-linux64/bin/nvim ~/bin/nvim
         # Install plugins
-        ~/bin/nvim +PlugInstall +qall > /dev/null
+        #~/bin/nvim +PlugInstall +qall > /dev/null
       fi
 		else
             # Fallback to Fedora
