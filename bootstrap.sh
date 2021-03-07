@@ -110,7 +110,9 @@ case $unamestr in
 			# Probably Ubuntu
 			sudo apt-get install -y --no-install-recommends zsh autojump silversearcher-ag screen tmux \
 		    vim git jq tig python-pip python3-pip
+      pip install setuptools wheel
       pip install neovim
+      pip3 install setuptools wheel 
       pip3 install neovim python-language-server pycodestyle pyflakes black rope
 
       # Apt version usually very old
@@ -118,6 +120,8 @@ case $unamestr in
       if [ $? -ne 0 ]; then
         curl -sL https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz | tar xz -C ~/bin
         ln -s ~/bin/nvim-linux64/bin/nvim ~/bin/nvim
+        # Install plugins
+        ~/bin/nvim +PlugInstall +qall > /dev/null
       fi
 		else
             # Fallback to Fedora
