@@ -108,7 +108,7 @@ case $unamestr in
     fi
 		if [ -f /etc/lsb-release ]; then
 			# Probably Ubuntu
-			sudo apt-get install -y zsh autojump silversearcher-ag screen tmux \
+			sudo apt-get install -y --no-install-recommends zsh autojump silversearcher-ag screen tmux \
 		    vim git jq tig python-pip python3-pip
       pip install neovim
       pip3 install neovim python-language-server pycodestyle pyflakes black rope
