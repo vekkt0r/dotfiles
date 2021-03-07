@@ -29,6 +29,8 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Would you like to use another custom folder than $ZSH/custom?
 ZSH_CUSTOM=$HOME/src/dotfiles/oh-my-zsh-custom/
 
+path=($HOME/bin /usr/local/bin $path)
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -41,7 +43,9 @@ source $ZSH/oh-my-zsh.sh
 # User configuration
 
 zstyle ':completion:*:ssh:*' hosts off
-path+=$HOME/bin:/usr/local/bin
+
+# Deduplicate PATH
+typeset -U path
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
