@@ -38,7 +38,7 @@ ln -s $PWD/gdbinit.dashboard ~/.gdbinit
 
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
-	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 fi
 
 if [ ! -d ~/.fzf ]; then
@@ -52,12 +52,12 @@ fi
 if [ ! -f ~/.vim/autoload/pathogen ]; then
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
         curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    git clone https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
+    git clone --depth 1 https://github.com/vim-airline/vim-airline.git ~/.vim/bundle/vim-airline
     #git clone https://github.com/wincent/command-t.git ~/.vim/bundle/command-t
-    git clone https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
-    git clone https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
-    git clone https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
-    #git clone https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
+    git clone --depth 1 https://github.com/scrooloose/nerdcommenter.git ~/.vim/bundle/nerdcommenter
+    #git clone --depth 1 https://github.com/rhysd/vim-clang-format.git ~/.vim/bundle/vim-clang-format
+    git clone --depth 1 https://github.com/SirVer/ultisnips.git ~/.vim/bundle/ultisnips
+    #git clone --depth 1 https://github.com/mileszs/ack.vim.git ~/.vim/bundle/ack.vim
     ln -sn ~/src/dotfiles/snippets/ultisnips ~/.vim/UltiSnips
 fi
 
@@ -131,7 +131,7 @@ case $unamestr in
             # only for numix-solarized
             sudo dnf install -y ruby-devel redhat-rpm-config glib2-devel gdk-pixbuf2-devel inkscape gtk-murrine-engine google-roboto-mono-fonts google-roboto-fonts
             sudo gem install sass
-            cd ~/src && git clone https://github.com/Ferdi265/numix-solarized-gtk-theme.git && cd numix-solarized-grk-theme && sudo make THEME=SolarizedDarkBlue install
+            cd ~/src && git clone --depth 1 https://github.com/Ferdi265/numix-solarized-gtk-theme.git && cd numix-solarized-grk-theme && sudo make THEME=SolarizedDarkBlue install
 		fi
 	;;
 esac

@@ -17,11 +17,11 @@ RUN apt install -y --no-install-recommends less locales
 RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen ; locale-gen
 
 # To build tmux
-RUN apt install -y --no-install-recommends bison libncurses5-dev libevent-dev curl
+RUN apt install -y --no-install-recommends bison libncurses5-dev libevent-dev curl gcc make
 
 USER $user
 WORKDIR /home/$user
-RUN git clone https://github.com/vekkt0r/dotfiles src/dotfiles && cd src/dotfiles && git submodule update --init && ./bootstrap.sh
+RUN git clone --recursive --shallow-submodules https://github.com/vekkt0r/dotfiles src/dotfiles && cd src/dotfiles && ./bootstrap.sh
 
 # Latest tmux
 RUN curl -L https://github.com/tmux/tmux/releases/download/3.2-rc/tmux-3.2-rc4.tar.gz | tar zx \
