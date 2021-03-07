@@ -1,0 +1,5 @@
+* vim
+  - g& / :~ - Repeat last substitute, replace pattern with last search pattern
+  - :g/regex/d - Apply command d on all lines matching pattern
+  - :g/regex/norm gu$ - Apply keystrokes on all lines matching pattern
+  - gv - Last visual mode selection
