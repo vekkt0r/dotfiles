@@ -117,7 +117,10 @@ end
 function centerWindow()
 	saved.win = hs.window.focusedWindow()
 	saved.winframe = saved.win:frame()
-	saved.win:centerOnScreen()
+  --saved.win:centerOnScreen()
+  saved.win:moveToUnit('[30,33,70,100]')
+	--hs.grid.setGrid('3x3', hs.screen.mainScreen())
+	--hs.grid.set(saved.win, {x = 1, y = 1, w = 1, h = 2}, hs.screen.mainScreen())
 end
 
 
@@ -129,7 +132,8 @@ end
 function leftThirds()
    saved.win = hs.window.focusedWindow()
    saved.winframe = saved.win:frame()
-	hs.grid.set(saved.win, {x = 0, y = 0, w = 1, h = 3}, hs.screen.mainScreen())
+	--hs.grid.set(saved.win, {x = 0, y = 0, w = 1, h = 3}, hs.screen.mainScreen())
+   saved.win:moveToUnit('[0,33,30,100]')
 end
 
 
@@ -141,7 +145,9 @@ end
 function rightThirds()
    saved.win = hs.window.focusedWindow()
    saved.winframe = saved.win:frame()
-	hs.grid.set(hs.window.focusedWindow(), {x = 1, y = 0, w = 2, h = 3}, hs.screen.mainScreen())
+	--hs.grid.set(hs.window.focusedWindow(), {x = 1, y = 0, w = 2, h = 3}, hs.screen.mainScreen())
+   saved.win:moveToUnit('[30,33,100,100]')
+  -- saved.win:moveToUnit('[70,33,100,100]')
 end
 
 
@@ -246,17 +252,18 @@ end
 -- 			to the top half of the screen.
 --
 function topHalfMove()
-	saveWidth = hs.grid.GRIDWIDTH
-	saveHeight = hs.grid.GRIDHEIGHT
-	hs.grid.GRIDWIDTH = 4
-	hs.grid.GRIDHEIGHT = 4
+	--saveWidth = hs.grid.GRIDWIDTH
+	--saveHeight = hs.grid.GRIDHEIGHT
+	--hs.grid.GRIDWIDTH = 4
+	--hs.grid.GRIDHEIGHT = 4
 
    saved.win = hs.window.focusedWindow()
    saved.winframe = saved.win:frame()
-	hs.grid.set(hs.window.focusedWindow(), { x=0, y=0, w=4, h=2}, hs.screen.mainScreen())
+   saved.win:moveToUnit('[30,0,70,33]')
+	--hs.grid.set(hs.window.focusedWindow(), { x=0, y=0, w=4, h=2}, hs.screen.mainScreen())
 
-	hs.grid.GRIDWIDTH = saveWidth
-	hs.grid.GRIDHEIGHT = saveHeight
+	--hs.grid.GRIDWIDTH = saveWidth
+	--hs.grid.GRIDHEIGHT = saveHeight
 end
 
 --
