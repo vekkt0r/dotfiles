@@ -11,3 +11,5 @@
 	tool = vimdiff
 [mergetool "vimdiff"]
 	path = nvim
+[color]
+	ui = auto
