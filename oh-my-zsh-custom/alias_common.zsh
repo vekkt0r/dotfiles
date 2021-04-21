@@ -10,7 +10,7 @@ alias tgf='tig --first-parent'
 alias tgs='tig status'
 alias fd='fd --glob'
 alias gh='git rev-parse HEAD'
-alias ds='docker exec -it $(docker ps -l | tail -n1 | awk "{print $1}") /bin/bash'
+alias ds="docker exec -it $(docker ps -l | tail -n1 | awk '{print $NF}') /bin/bash"
 
 # Global alias
 alias -g F='find . -name'
