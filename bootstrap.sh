@@ -36,6 +36,10 @@ ln -s $PWD/muttrc ~/.mutt/muttrc
 ln -s $PWD/mutt_mailcap ~/.mutt/mailcap
 ln -s $PWD/gdbinit.dashboard ~/.gdbinit
 
+if [ ! -d oh-my-zsh ]; then
+  git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git
+fi
+
 if [ ! -d ~/.tmux/plugins/tpm ]; then
 	mkdir -p ~/.tmux/plugins
 	git clone --depth 1 https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
