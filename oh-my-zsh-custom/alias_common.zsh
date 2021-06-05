@@ -36,3 +36,8 @@ gcr() {
   [ -f $top ] && top=$(awk '{print $2}' ${top})
   git commit -c `cat ${top}/rebase-merge/amend`
 }
+
+# Git add file via fzf helper
+gaf() {
+  git status -s | awk '$1 ~ /[MADR]/ { print $2 }' | fzf -m | xargs git add
+}
