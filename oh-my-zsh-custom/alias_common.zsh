@@ -11,6 +11,7 @@ alias tgs='tig status'
 alias fd='fd --glob'
 alias gh='git rev-parse HEAD'
 alias ds="docker exec -it \$(docker ps -l | tail -n1 | awk '{print \$NF}') /bin/bash"
+alias tmux_set_pane_name="tmux set pane-border-status top && printf '\033]2;%s\033\\'"
 
 # Global alias
 alias -g F='find . -name'
