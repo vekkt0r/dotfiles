@@ -720,4 +720,16 @@ snippet pmdoc "pocoo style module doc string" b
 $0
 endsnippet
 
+snippet argparse "argparse boilerplate"
+import argparse
+
+parser = argparse.ArgumentParser(description='$1')
+parser.add_argument('${2:input}', nargs='?', help='${3:Input files}')
+# parser.add_argument('--flag', action='store_true', help='')
+
+args = parser.parse_args()
+
+$0
+endsnippet
+
 # vim:ft=snippets:
