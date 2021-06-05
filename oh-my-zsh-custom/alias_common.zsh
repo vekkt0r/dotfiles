@@ -41,3 +41,7 @@ gcr() {
 gaf() {
   git status -s | awk '$1 ~ /[MADR]/ { print $2 }' | fzf -m | xargs git add
 }
+
+cec_input() {
+  echo "tx 4f:82:${1}0:00" | cec-client -s
+}
