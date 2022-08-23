@@ -34,6 +34,29 @@ STATUS=$(echo "$DATA" | cut -d "|" -f2)
 function changeStatus {
     echo "$CURRENT_TIME|$1" > "$SAVE_LOCATION";
     osascript -e "display notification \"$2\" with title \"$TOMATO Pomodoro\" sound name \"$3\"" &> /dev/null
+    duckyReq "$2"
+}
+
+function duckyCmd {
+    curl -s -o /dev/null -X POST "http://192.168.0.180/json/state" -d "$1" -H "Content-Type: application/json"
+}
+
+function duckyReq {
+    case $1 in
+      "Work Mode")
+        duckyCmd "{'on':true,'v':false}"
+        #sleep 0.5
+        duckyCmd "{'seg':{'fx':0},'v':false}"
+        ;;
+      "Break Mode")
+        duckyCmd "{'seg':{'fx':112},'v':false}"
+        ;;
+      "Disabled")
+        duckyCmd "{'on':false,'v':false}"
+        ;;
+      *)
+        echo "Unknown mode $1"
+    esac
 }
 
 function breakMode {
