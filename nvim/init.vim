@@ -10,23 +10,62 @@ Plug 'junegunn/fzf.vim'
 Plug 'vim-airline/vim-airline'
 Plug 'SirVer/ultisnips'
 Plug 'rhysd/vim-clang-format'
-Plug 'iCyMind/NeoSolarized'
+Plug 'ishan9299/nvim-solarized-lua'
 Plug 'scrooloose/nerdcommenter'
 Plug 'vekkt0r/toggle-bool'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
-Plug 'gcaufield/vim-monkey-c'
+Plug 'vekkt0r/vim-monkey-c'
 Plug 'axvr/org.vim'
 Plug 'krzbe/fzf-git-submodules'
+Plug 'windwp/nvim-autopairs'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'voldikss/vim-floaterm'
 
 let g:LanguageClient_serverCommands = {
-  \ 'c': ['/usr/local/opt/llvm/bin/clangd'],
-  \ 'cpp': ['/usr/local/opt/llvm/bin/clangd'],
+  \ 'c': ['/usr/bin/clangd'],
+  \ 'cpp': ['/usr/bin/clangd'],
   \ 'python': ['/usr/local/bin/pyls'],
   \ }
 
+let g:LanguageClient_loggingLevel = 'INFO'
+let g:LanguageClient_loggingFile =  expand('~/.local/share/nvim/LanguageClient.log')
+let g:LanguageClient_serverStderr = expand('~/.local/share/nvim/LanguageServer.log')
+
 call plug#end()
+
+lua <<EOF
+local npairs = require('nvim-autopairs')
+
+npairs.setup({
+    check_ts = true,
+    })
+
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    custom_captures = {
+        ["punctuation.bracket"] = "Variable",
+        ["punctuation.delimiter"] = "Variable",
+        ["keyword.function"] = "Keyword",
+        ["include"] = "Keyword",
+    }
+  },
+  incremental_selection = {
+    enable = true,
+    keymaps = {
+      init_selection = "gnn",
+      node_incremental = "grn",
+      scope_incremental = "grc",
+      node_decremental = "grm",
+    },
+  },
+  indent = {
+    enable = true
+  }
+}
+EOF
 
 " enable ncm2 for all buffers
 autocmd BufEnter * call ncm2#enable_for_buffer()
@@ -64,6 +103,7 @@ imap kj <Esc>
 
 " Build current file with F10
 map <F10> :!build.sh %:p:h<Return><Return>
+map <C-b> :!build.sh %:p:h<Return><Return>
 
 " Convenience macro for w3m
 map <Leader>W :te w3m %<Return>i
@@ -101,13 +141,12 @@ map <Leader>g :BTags<Return>
 map <Leader>C :Components<Return>
 
 " GIT
-map <Leader>l :te tig %<Return>i
-map <Leader>L :te tig --follow %<Return>i
-map <Leader>B :te tig blame +<C-r>=line('.')<Return> %<Return>i
-map <Leader>D :te git diff %<Return>i
-map <Leader>z :!codemapper map %<Return>
-map <Leader>S :te tig status<Return>i
-map <Leader>V :te git checkout -p %<Return>i
+map <Leader>l :FloatermNew tig %<Return>i
+map <Leader>L :FloatermNew tig --follow %<Return>i
+map <Leader>B :FloatermNew tig blame +<C-r>=line('.')<Return> %<Return>i
+map <Leader>D :FloatermNew git diff %<Return>i
+map <Leader>S :FloatermNew tig status<Return>i
+map <Leader>V :FloatermNew git checkout -p %<Return>i
 
 " Smart semicolon
 inoremap <Leader>; <C-o>A;<Esc>
@@ -132,6 +171,10 @@ map <Leader>n :te nnn %:p:h<Return>i
 augroup SetCMD
   autocmd FileType monkeyc let &l:commentstring='// %s'
 augroup END
+
+" Floaterm
+let g:floaterm_height=1.0
+let g:floaterm_width=0.8
 
 " UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
@@ -168,5 +211,4 @@ autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "norm
 
 " Solarized theme
 set termguicolors
-set background=dark
-colorscheme NeoSolarized
+colorscheme solarized-flat
