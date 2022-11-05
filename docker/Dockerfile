@@ -19,8 +19,8 @@ RUN echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen ; locale-gen
 # To build tmux
 RUN apt install -y --no-install-recommends bison libncurses5-dev libevent-dev curl gcc make
 
-USER $user
 WORKDIR /home/$user
+USER $user
 RUN git clone --recursive --shallow-submodules https://github.com/vekkt0r/dotfiles src/dotfiles && cd src/dotfiles && ./bootstrap.sh
 
 # Latest tmux
