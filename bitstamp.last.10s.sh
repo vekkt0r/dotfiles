@@ -12,4 +12,9 @@
 # by Damien Lajarretie
 # Based on Coinbase bitbar plugin by Mat Ryer
 
-echo -n "$"; curl -s "https://www.bitstamp.net/api/ticker/" | egrep -o '"last": "[0-9]+(\.)?([0-9]{0,2}")?' | sed 's/"last": //' | sed 's/\"//g'
+btcusd=$(curl -s "https://www.bitstamp.net/api/ticker/" | egrep -o '"last": "[0-9]+(\.)?([0-9]{0,2}")?' | sed 's/"last": //' | sed 's/\"//g')
+if awk "BEGIN {exit !($btcusd < 35000)}"; then
+  color="| color=red"
+fi
+
+echo -n "$"; echo "${btcusd}$color"

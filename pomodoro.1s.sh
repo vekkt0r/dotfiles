@@ -38,7 +38,8 @@ function changeStatus {
 }
 
 function duckyCmd {
-    curl -s -o /dev/null -X POST "http://192.168.0.180/json/state" -d "$1" -H "Content-Type: application/json"
+    echo "" > /dev/null
+    #curl -s -o /dev/null -X POST "http://192.168.0.180/json/state" -d "$1" -H "Content-Type: application/json"
 }
 
 function duckyReq {
