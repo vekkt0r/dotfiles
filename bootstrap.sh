@@ -35,6 +35,8 @@ mkdir -p ~/.mutt
 ln -s $PWD/muttrc ~/.mutt/muttrc
 ln -s $PWD/mutt_mailcap ~/.mutt/mailcap
 ln -s $PWD/gdbinit.dashboard ~/.gdbinit
+ln -s $PWD/fish ~/.config/fish
+ln -s $PWD/starship.toml ~/.config/starship.toml
 
 if [ ! -d oh-my-zsh ]; then
   git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git
