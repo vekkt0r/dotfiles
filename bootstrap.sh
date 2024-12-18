@@ -101,6 +101,7 @@ case $unamestr in
     ln -s $PWD/DefaultKeyBinding.dict ~/Library/KeyBindings/DefaultKeyBinding.dict
     ln -s $PWD/USMD.bundle ~/Library/Keyboard\ Layouts/USMD.bundle
     ln -s $PWD/hammerspoon ~/.hammerspoon
+    ln -s $PWD/nushell ~/Library/Application\ Support/nushell
 	;;
 	"Linux")
 		ln -sn $PWD/awesome ~/.config/awesome
