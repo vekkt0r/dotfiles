@@ -39,6 +39,89 @@ saved = {}
 saved.win = {}
 saved.winframe = {}
 
+function repeatKey(key, n)
+  for i=1,n do
+    hs.eventtap.keyStroke({}, key)
+  end
+end
+--
+-- Function:		reportQtime
+--
+times = {}
+
+local function timeParseCallback(exitCode, stdOut, stdErr)
+  if exitCode == 0 then
+    for tabCount, time in string.gmatch(stdOut, "(%d+):(%g+)") do
+      repeatKey("tab", tonumber(tabCount))
+      hs.timer.usleep(10000)
+      hs.eventtap.keyStrokes(time)
+      hs.timer.usleep(10000)
+    end
+    --print(stdOut)
+  else
+    print(stdOut, stdErr)
+  end
+end
+
+function timeParseQtime()
+  if times.task then
+    times.task:terminate()
+    times.task = nil
+  end
+  times.task = hs.task.new("/usr/local/bin/python3", timeParseCallback, {"/Users/adam/src/timereport/report.py"})
+  times.task:start()
+end
+
+--
+-- Function:		citrixRdp
+--
+-- Description:	Setup Citrix RDP settings by mouse
+--
+function citrixRdp()
+  --hs.eventtap.leftClick({x=540, y=410})
+  --hs.eventtap.keyStroke({"shift"}, "tab")
+  --hs.eventtap.leftClick({x=1717, y=505})
+  hs.timer.usleep(10000)
+  hs.eventtap.keyStrokes("SE03-")
+  --hs.timer.usleep(10000000)
+  hs.timer.doAfter(1, citrixRdp2)
+end
+
+function citrixRdp2()
+  hs.eventtap.keyStrokes("OF-WD2894")
+  --hs.eventtap.leftClick({x=1740, y=724})
+  repeatKey("tab", 9)
+  -- Display
+  hs.eventtap.keyStroke({}, "right")
+  hs.eventtap.keyStroke({}, "tab")
+  repeatKey("left", 2)
+  repeatKey("tab", 2)
+  repeatKey("up", 3)
+  repeatKey("tab", 5)
+  hs.eventtap.keyStroke({}, "right")
+  -- Remote Audio
+  hs.eventtap.keyStroke({}, "tab")
+  hs.eventtap.keyStroke({}, "return")
+  hs.eventtap.keyStroke({}, "down")
+  repeatKey("tab", 2)
+  hs.eventtap.keyStroke({}, "return")
+  -- alt-tab on remote
+  hs.eventtap.keyStroke({}, "tab")
+  hs.eventtap.keyStroke({}, "up")
+  -- Devices and resources
+  hs.eventtap.keyStroke({}, "tab")
+  hs.eventtap.keyStroke({}, "space")
+  hs.eventtap.keyStroke({}, "tab")
+  hs.eventtap.keyStroke({}, "space")
+  -- Experience
+  repeatKey("tab", 5)
+  hs.eventtap.keyStroke({}, "right")
+  hs.eventtap.keyStroke({}, "tab")
+  repeatKey("up", 6)
+  repeatKey("tab", 2)
+  hs.eventtap.keyStroke({}, "space")
+end
+
 --
 -- Function:		returnLast
 --
