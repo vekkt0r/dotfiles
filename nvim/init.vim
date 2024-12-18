@@ -1,3 +1,5 @@
+let g:python3_host_prog  = expand('/usr/local/bin/python3.9')
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 Plug 'ncm2/ncm2'
@@ -12,21 +14,22 @@ Plug 'SirVer/ultisnips'
 Plug 'rhysd/vim-clang-format'
 Plug 'ishan9299/nvim-solarized-lua'
 Plug 'scrooloose/nerdcommenter'
-Plug 'vekkt0r/toggle-bool'
+Plug 'gerazov/toggle-bool.nvim'
 Plug 'Vimjas/vim-python-pep8-indent'
 Plug 'tpope/vim-surround'
 Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'vekkt0r/vim-monkey-c'
-Plug 'axvr/org.vim'
 Plug 'krzbe/fzf-git-submodules'
 Plug 'windwp/nvim-autopairs'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'voldikss/vim-floaterm'
+Plug 'nvim-orgmode/orgmode'
+Plug 'christoomey/vim-tmux-navigator'
 
 let g:LanguageClient_serverCommands = {
   \ 'c': ['/usr/bin/clangd'],
-  \ 'cpp': ['/usr/bin/clangd'],
-  \ 'python': ['/usr/local/bin/pyls'],
+  \ 'cpp': ['/usr/bin/clangd', '--clang-tidy'],
+  \ 'python': ['/usr/local/bin/ruff-lsp'],
   \ }
 
 let g:LanguageClient_loggingLevel = 'INFO'
@@ -37,20 +40,33 @@ call plug#end()
 
 lua <<EOF
 local npairs = require('nvim-autopairs')
+vim.g.mapleader = ','
+vim.g.maplocalleader = ‘,’
 
 npairs.setup({
     check_ts = true,
     })
 
+require("toggle-bool").setup {
+  mapping = "<leader>T",
+  additional_toggles = {
+    Yes = 'No',
+    On = 'Off',
+    ["0"] = "1",
+    Enable = 'Disable',
+    Enabled = 'Disabled',
+  },
+}
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    custom_captures = {
-        ["punctuation.bracket"] = "Variable",
-        ["punctuation.delimiter"] = "Variable",
-        ["keyword.function"] = "Keyword",
-        ["include"] = "Keyword",
-    }
+    --custom_captures = {
+     --   ["punctuation.bracket"] = "Variable",
+      --  ["punctuation.delimiter"] = "Variable",
+       -- ["keyword.function"] = "Keyword",
+        --["include"] = "Keyword",
+    --},
+    additional_vim_regex_highlighting = {'org'},
   },
   incremental_selection = {
     enable = true,
@@ -63,7 +79,8 @@ require'nvim-treesitter.configs'.setup {
   },
   indent = {
     enable = true
-  }
+  },
+  ensure_installed = {'org', 'c', 'vim', 'vimdoc', 'markdown'},
 }
 EOF
 
@@ -161,11 +178,11 @@ noremap! <Leader>e <esc>ea
 noremap! <Leader>b <esc>bi
 noremap! <Leader>$ <esc>$a
 
-" Toggle word
-map <Leader>T :ToggleBool<Return>
-
 " NNN launch in current dir
 map <Leader>n :te nnn %:p:h<Return>i
+
+" Browse files
+map <Leader>e :Ex<Return>
 
 " Fix comments for MonkeyC
 augroup SetCMD
@@ -190,6 +207,15 @@ if &diff
   map <Leader>3 :diffget REMOTE<CR>
 endif
 
+" Custom tmux-navigator
+let g:tmux_navigator_no_mappings = 1
+
+nnoremap <silent> <C-M-H> :<C-U>TmuxNavigateLeft<cr>
+nnoremap <silent> <C-M-J> :<C-U>TmuxNavigateDown<cr>
+nnoremap <silent> <C-M-K> :<C-U>TmuxNavigateUp<cr>
+nnoremap <silent> <C-M-L> :<C-U>TmuxNavigateRight<cr>
+nnoremap <silent> <C-M-\> :<C-U>TmuxNavigatePrevious<cr>
+
 " ClangFormat setup
 let g:clang_format#command = 'clang-format'
 autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
@@ -207,7 +233,7 @@ let g:org_clean_folds = 1
 autocmd BufNewFile,BufRead *.mmd set filetype=markdown
 
 " Jump to last known position when opening file
-autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+" autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 
 " Solarized theme
 set termguicolors
