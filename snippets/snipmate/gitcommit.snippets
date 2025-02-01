@@ -1,0 +1,2 @@
+snippet prev "previous git commit key"
+	`git log -1 --pretty=format:%s | awk '{print $1}'` $1
