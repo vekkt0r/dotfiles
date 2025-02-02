@@ -2,6 +2,10 @@
 export ZSH=$HOME/src/dotfiles/oh-my-zsh
 export FZF_BASE=$HOME/src/fzf
 
+eval "$(starship init zsh)"
+
+return
+
 ZSH_THEME="vekkt0r"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
