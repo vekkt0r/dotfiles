@@ -18,7 +18,7 @@ bind main S !@sh -c "git commit --fixup=%(commit) ; GIT_SEQUENCE_EDITOR=touch gi
 bind generic g none
 
 # Vim-style bindings
-bind generic g none
+#bind generic g none
 bind generic gg move-first-line
 bind main G move-last-line
 bind generic G move-last-line
