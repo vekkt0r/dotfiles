@@ -17,6 +17,18 @@ return {
   },
 
   {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+
+  {
     "echasnovski/mini.surround",
     event = "User FilePost",
     version = false,
@@ -43,11 +55,17 @@ return {
 
   {
     "nvim-telescope/telescope.nvim",
+    dependencies = {
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "kelly-lin/telescope-ag" },
+    },
     opts = function(_, conf)
       -- TODO: Only for buffer picker
       conf.defaults.mappings.i = {
         ["<C-k>"] = "delete_buffer",
       }
+      require("telescope").load_extension "ag"
+      require("telescope").load_extension "fzf"
       return conf
     end,
   },

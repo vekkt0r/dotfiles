@@ -7,13 +7,7 @@ local servers = {
   ruff = {},
   jedi_language_server = {},
   clangd = {},
-  lua_ls = {
-    settings = {
-      Lua = {
-        diagnostics = { globals = { "vim" } },
-      },
-    },
-  },
+  lua_ls = {},
 }
 local nvlsp = require "nvchad.configs.lspconfig"
 

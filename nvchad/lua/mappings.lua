@@ -30,7 +30,7 @@ local git_commands = {
   diff = { key = "<Leader>cd", cmd = "git diff" },
   log = { key = "<Leader>cl", cmd = "tig" },
   status = { key = "<Leader>cs", cmd = "tig status", args = "" },
-  revert = { key = "<Leader>cv", cmd = "git checkout -p", args = "" },
+  revert = { key = "<Leader>cv", cmd = "git checkout -p" },
 }
 
 for k, v in pairs(git_commands) do
@@ -42,6 +42,7 @@ end
 -- Telescope
 local builtin = require "telescope.builtin"
 map("n", "<leader><leader>", builtin.buffers)
+map("n", "<leader>fr", builtin.resume)
 
 -- Disable mappings
 local nomap = vim.keymap.del
