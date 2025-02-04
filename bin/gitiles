@@ -1,0 +1,6 @@
+#!/bin/bash
+
+file=$1
+remote=$(git remote get-url origin)
+
+echo -n "$remote+/refs/heads/master/$file" | tmux load-buffer -
