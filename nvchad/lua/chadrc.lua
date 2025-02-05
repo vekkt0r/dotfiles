@@ -21,4 +21,20 @@ M.term = {
   },
 }
 
+local utils = require "nvchad.stl.utils"
+
+M.ui = {
+  statusline = {
+    modules = {
+      file = function()
+        local sep_r = utils.separators["default"]["right"]
+        local x = utils.file()
+        x[2] = vim.fn.expand "%"
+        local name = " " .. x[2] .. " "
+        return "%#St_file# " .. x[1] .. name .. "%#St_file_sep#" .. sep_r
+      end,
+    },
+  },
+}
+
 return M
