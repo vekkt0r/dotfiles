@@ -2,7 +2,6 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
-map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 map("i", "kj", "<ESC>")
 
@@ -10,7 +9,8 @@ map("i", "kj", "<ESC>")
 
 --- Open floating terminal with some extra hacks to close it on cmd exit
 local term = function(cmd, args)
-  args = args or vim.api.nvim_buf_get_name(0)
+  args = args or vim.fn.expand "%"
+  args = type(args) == "function" and args() or args
   require("nvchad.term").new {
     cmd = cmd .. " " .. args .. " #", -- end with # to disable nvchad launch of shell after command
     pos = "float",
@@ -26,7 +26,13 @@ local term = function(cmd, args)
 end
 
 local git_commands = {
-  blame = { key = "<Leader>cb", cmd = "tig blame" },
+  blame = {
+    key = "<Leader>cb",
+    cmd = "tig blame",
+    args = function()
+      return (vim.fn.expand "%" .. " +" .. vim.api.nvim_win_get_cursor(0)[1])
+    end,
+  },
   diff = { key = "<Leader>cd", cmd = "git diff" },
   log = { key = "<Leader>cl", cmd = "tig" },
   status = { key = "<Leader>cs", cmd = "tig status", args = "" },
@@ -35,7 +41,7 @@ local git_commands = {
 
 for k, v in pairs(git_commands) do
   map("n", v.key, function()
-    term(v.cmd, v.args or nil)
+    term(v.cmd, v.args)
   end, { desc = "Git " .. k })
 end
 
