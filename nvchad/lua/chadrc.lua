@@ -5,13 +5,6 @@ M.base46 = {
   theme = "solarized_dark",
 }
 
--- M.nvdash = { load_on_startup = true }
--- M.ui = {
---       tabufline = {
---          lazyload = false
---      }
---}
-
 M.term = {
   float = {
     row = 0.1,
@@ -20,6 +13,8 @@ M.term = {
     height = 0.8,
   },
 }
+
+M.lsp = { signature = false }
 
 local utils = require "nvchad.stl.utils"
 

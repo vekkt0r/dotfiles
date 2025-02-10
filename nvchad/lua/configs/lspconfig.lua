@@ -6,11 +6,25 @@ local lspconfig = require "lspconfig"
 local servers = {
   ruff = {},
   jedi_language_server = {},
-  clangd = {},
+  clangd = {
+    cmd = { "clangd", "--header-insertion=iwyu" },
+  },
   lua_ls = {},
 }
-local nvlsp = require "nvchad.configs.lspconfig"
 
+local nvlsp = require "nvchad.configs.lspconfig"
+local default_config = {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
+for lsp, extra_config in pairs(servers) do
+  local cfg = vim.tbl_deep_extend("force", default_config, extra_config)
+  lspconfig[lsp].setup(cfg)
+end
+
+-- highlight on hover
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
   callback = function(event)
@@ -39,13 +53,3 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
-
--- lsps with default config
-for lsp, opts in pairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-    settings = opts,
-  }
-end

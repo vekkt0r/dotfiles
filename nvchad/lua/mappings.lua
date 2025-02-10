@@ -5,10 +5,19 @@ local map = vim.keymap.set
 map("i", "jk", "<ESC>")
 map("i", "kj", "<ESC>")
 
+map("n", "<Leader>o", "<Cmd>ClangdSwitchSourceHeader<CR>")
+
+-- Diff / mergetool
+if vim.wo.diff then
+  map("n", "<Leader>1", ":diffget LOCAL<CR>")
+  map("n", "<Leader>2", ":diffget BASE<CR>")
+  map("n", "<Leader>3", ":diffget REMOTE<CR>")
+end
+
 -- Git
 
 --- Open floating terminal with some extra hacks to close it on cmd exit
-local term = function(cmd, args)
+local term = function(cmd, args, keep)
   args = args or vim.fn.expand "%"
   args = type(args) == "function" and args() or args
   require("nvchad.term").new {
@@ -17,8 +26,9 @@ local term = function(cmd, args)
     termopen_opts = {
       detach = false,
       on_exit = function(_, data, _)
-        if data == 0 then
+        if data == 0 and not keep then
           vim.cmd "close"
+          vim.cmd "checktime"
         end
       end,
     },
@@ -33,7 +43,7 @@ local git_commands = {
       return (vim.fn.expand "%" .. " +" .. vim.api.nvim_win_get_cursor(0)[1])
     end,
   },
-  diff = { key = "<Leader>cd", cmd = "git diff" },
+  diff = { key = "<Leader>cd", cmd = "git diff", keep = true },
   log = { key = "<Leader>cl", cmd = "tig" },
   status = { key = "<Leader>cs", cmd = "tig status", args = "" },
   revert = { key = "<Leader>cv", cmd = "git checkout -p" },
@@ -41,7 +51,7 @@ local git_commands = {
 
 for k, v in pairs(git_commands) do
   map("n", v.key, function()
-    term(v.cmd, v.args)
+    term(v.cmd, v.args, v.keep)
   end, { desc = "Git " .. k })
 end
 

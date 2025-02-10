@@ -18,6 +18,11 @@ return {
   },
 
   {
+    "hrsh7th/nvim-cmp",
+    opts = require "configs.cmp",
+  },
+
+  {
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
@@ -34,6 +39,21 @@ return {
     event = "User FilePost",
     version = false,
     opts = {},
+  },
+
+  {
+    "gerazov/toggle-bool.nvim",
+    event = "VeryLazy",
+    opts = {
+      mapping = "<leader>T",
+      additional_toggles = {
+        Yes = "No",
+        On = "Off",
+        ["0"] = "1",
+        Enable = "Disable",
+        Enabled = "Disabled",
+      },
+    },
   },
 
   {
