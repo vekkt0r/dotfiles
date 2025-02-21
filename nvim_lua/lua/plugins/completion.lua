@@ -6,10 +6,10 @@ return {
 
     enabled = true,
 
-    build = 'cargo build --release',
+    -- build = 'cargo build --release',
 
     -- use a release tag to download pre-built binaries
-    version = 'v0.11.0',
+    version = '*',
 
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
