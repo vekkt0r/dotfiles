@@ -60,6 +60,13 @@ local builtin = require "telescope.builtin"
 map("n", "<leader><leader>", builtin.buffers)
 map("n", "<leader>fr", builtin.resume)
 
+-- Molten
+map("n", "<leader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
+map("n", "<leader>rj", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "run operator selection" })
+map("n", "<leader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
+map("n", "<leader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
+map("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })
+
 -- Disable mappings
 local nomap = vim.keymap.del
 

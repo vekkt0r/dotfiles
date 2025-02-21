@@ -34,6 +34,9 @@ dofile(vim.g.base46_cache .. "statusline")
 require "options"
 require "nvchad.autocmds"
 
+vim.g.loaded_python3_provider = nil
+
 vim.schedule(function()
   require "mappings"
+  vim.g.python3_host_prog = "/usr/local/bin/python3"
 end)

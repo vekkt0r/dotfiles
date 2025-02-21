@@ -49,6 +49,32 @@ return {
   },
 
   {
+    "vekkt0r/molten-nvim",
+    build = ":UpdateRemotePlugins",
+    ft = { "markdown", "python" },
+    version = "^1.0.0",
+    dependencies = {
+      {
+        "folke/snacks.nvim",
+        ---@type snacks.Config
+        opts = {
+          image = {},
+        },
+      },
+    },
+    init = function()
+      vim.g.molten_image_provider = "snacks.nvim"
+      vim.g.molten_output_show_exec_time = false
+    end,
+  },
+
+  {
+    "GCBallesteros/jupytext.nvim",
+    event = "User FilePost",
+    opts = {},
+  },
+
+  {
     "gerazov/toggle-bool.nvim",
     event = "VeryLazy",
     opts = {
@@ -65,6 +91,7 @@ return {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     opts = {
       ensure_installed = {
         "vim",
@@ -77,6 +104,24 @@ return {
         "markdown",
         "markdown_inline",
         "python",
+      },
+      textobjects = {
+        move = {
+          enable = true,
+          goto_next_start = {
+            ["]j"] = { query = "@cell.start", desc = "Next cell start" },
+          },
+          goto_previous_start = {
+            ["[j"] = { query = "@cell.start", desc = "Prev cell start" },
+          },
+        },
+        select = {
+          enable = true,
+          lookahead = true,
+          keymaps = {
+            ["ib"] = { query = "@cell.outer", desc = "Jupytext cell" },
+          },
+        },
       },
     },
   },
