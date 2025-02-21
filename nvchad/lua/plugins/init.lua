@@ -42,6 +42,13 @@ return {
   },
 
   {
+    "Vigemus/iron.nvim",
+    ft = { "python", "sh" },
+    event = "User FilePost",
+    opts = require "configs.iron",
+  },
+
+  {
     "gerazov/toggle-bool.nvim",
     event = "VeryLazy",
     opts = {
