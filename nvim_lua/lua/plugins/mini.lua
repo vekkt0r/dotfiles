@@ -12,7 +12,7 @@ return {
     require('mini.bufremove').setup()
 
     local bufremove = require 'mini.bufremove'
-    vim.keymap.set('n', ',d', bufremove.delete, { desc = 'Remove buffer' })
+    vim.keymap.set('n', '<leader>d', bufremove.delete, { desc = 'Remove buffer' })
 
     local minifiles = require 'mini.files'
     minifiles.setup {}

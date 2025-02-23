@@ -1,7 +1,7 @@
 return {
   'craftzdog/solarized-osaka.nvim',
+  lazy = false,
   config = function()
-    vim.opt.termguicolors = true
     vim.cmd 'colorscheme solarized-osaka'
   end,
 }

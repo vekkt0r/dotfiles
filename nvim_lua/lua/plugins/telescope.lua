@@ -7,6 +7,7 @@ return {
     'nvim-lua/plenary.nvim',
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     { 'nvim-telescope/telescope-ui-select.nvim' },
+    { 'kelly-lin/telescope-ag' },
   },
   config = function()
     require('telescope').setup {
@@ -16,6 +17,7 @@ return {
             ['<C-k>'] = 'delete_buffer',
           },
         },
+        vimgrep_arguments = { 'ag', '--nocolor', '--noheading', '--nobreak', '--column' },
       },
       extensions = {
         ['ui-select'] = {
@@ -26,6 +28,7 @@ return {
 
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
+    pcall(require('telescope').load_extension, 'ag')
     pcall(require('telescope').load_extension, 'ui-select')
   end,
 }
