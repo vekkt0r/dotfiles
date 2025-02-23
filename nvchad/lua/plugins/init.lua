@@ -137,6 +137,7 @@ return {
       conf.defaults.mappings.i = {
         ["<C-k>"] = "delete_buffer",
       }
+      conf.defaults.vimgrep_arguments = { "ag", "--nocolor", "--noheading", "--nobreak", "--column" }
       require("telescope").load_extension "ag"
       require("telescope").load_extension "fzf"
       return conf

@@ -59,6 +59,7 @@ end
 local builtin = require "telescope.builtin"
 map("n", "<leader><leader>", builtin.buffers)
 map("n", "<leader>fr", builtin.resume)
+map("n", "<leader>A", builtin.grep_string)
 
 -- Molten
 map("n", "<leader>mi", ":MoltenInit<CR>", { silent = true, desc = "Initialize the plugin" })
