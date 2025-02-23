@@ -120,6 +120,10 @@ return {
           lookahead = true,
           keymaps = {
             ["ib"] = { query = "@cell.outer", desc = "Jupytext cell" },
+            ["if"] = { query = "@function.inner", desc = "Inside function" },
+            ["af"] = { query = "@function.outer", desc = "Around function" },
+            ["ip"] = { query = "@parameter.inner", desc = "Inside parameter" },
+            ["ap"] = { query = "@parameter.outer", desc = "Around parameter" },
           },
         },
       },
