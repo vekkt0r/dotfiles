@@ -1,6 +1,10 @@
-snippet ifmain "ifmain" b
-	if __name__ == '_main__':
+snippet ifmain "ifmain"
+	if __name__ == '__main__':
 		${1:main()}
+
+snippet cell Jupyter cell
+	# %%
+	${1}
 
 snippet argparse "argparse boilerplate"
 	import argparse
