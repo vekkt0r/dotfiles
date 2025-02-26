@@ -34,6 +34,9 @@ end
 map('n', '<space>x', ':.lua<CR>')
 map('v', '<space>x', ':lua<CR>')
 
+map('n', '<leader>/', 'gcc', { desc = 'toggle comment', remap = true })
+map('v', '<leader>/', 'gc', { desc = 'toggle comment', remap = true })
+
 -- Buffer navigation helpers
 map('n', '<leader>a', ':bn<CR>')
 map('n', '<leader>s', ':bp<CR>')
@@ -47,6 +50,7 @@ map('n', '<leader>A', builtin.grep_cword)
 -- map('n', '<leader>ff', builtin.find_files)
 map('n', '<leader>ff', builtin.files)
 map('n', '<leader>fg', builtin.lines)
+map('n', '<leader>fo', builtin.oldfiles)
 -- map('n', '<leader>fh', builtin.help_tags)
 
 -- lsp
@@ -59,6 +63,7 @@ map('n', '<leader>rj', ':MoltenEvaluateOperator<CR>', { silent = true, desc = 'r
 map('n', '<leader>rl', ':MoltenEvaluateLine<CR>', { silent = true, desc = 'evaluate line' })
 map('n', '<leader>rr', ':MoltenReevaluateCell<CR>', { silent = true, desc = 're-evaluate cell' })
 map('v', '<leader>r', ':<C-u>MoltenEvaluateVisual<CR>gv', { silent = true, desc = 'evaluate visual selection' })
+map({ 'n', 'v' }, '<leader>ro', ':noautocmd MoltenEnterOutput<CR>', { silent = true, desc = 'show/enter output' })
 
 -- Git
 
