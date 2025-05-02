@@ -1,10 +1,12 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
+vim.g.python3_host_prog = '/usr/local/bin/python3'
 
 local o = vim.o
 o.mouse = ''
 o.clipboard = ''
 o.scrolloff = 10
+o.updatetime = 500
 
 local map = vim.keymap.set
 

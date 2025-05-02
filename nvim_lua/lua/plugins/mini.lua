@@ -14,10 +14,14 @@ return {
     local bufremove = require 'mini.bufremove'
     vim.keymap.set('n', '<leader>d', bufremove.delete, { desc = 'Remove buffer' })
 
+    local trailspace = require 'mini.trailspace'
+    trailspace.setup {}
+    vim.keymap.set('n', '<leader>w', trailspace.trim)
+
     local minifiles = require 'mini.files'
     minifiles.setup {}
     vim.keymap.set('n', '<leader>e', function()
-      minifiles.open()
+      minifiles.open(vim.api.nvim_buf_get_name(0))
     end, { desc = 'File tree browser' })
 
     -- Examples:
