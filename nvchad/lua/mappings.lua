@@ -67,6 +67,7 @@ map("n", "<leader>rj", ":MoltenEvaluateOperator<CR>", { silent = true, desc = "r
 map("n", "<leader>rl", ":MoltenEvaluateLine<CR>", { silent = true, desc = "evaluate line" })
 map("n", "<leader>rr", ":MoltenReevaluateCell<CR>", { silent = true, desc = "re-evaluate cell" })
 map("v", "<leader>r", ":<C-u>MoltenEvaluateVisual<CR>gv", { silent = true, desc = "evaluate visual selection" })
+map("n", "<leader>ro", ":noautocmd MoltenEnterOutput<CR>", { silent = true, desc = "show/enter output" })
 
 -- Disable mappings
 local nomap = vim.keymap.del

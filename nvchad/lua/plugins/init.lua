@@ -18,6 +18,22 @@ return {
   },
 
   {
+    "mfussenegger/nvim-dap",
+    event = "User FilePost",
+    -- opts = {},
+  },
+
+  {
+    "ThePrimeagen/harpoon",
+    event = "VeryLazy",
+    branch = "harpoon2",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    config = function()
+      require "configs.harpoon"
+    end,
+  },
+
+  {
     "hrsh7th/nvim-cmp",
     opts = require "configs.cmp",
   },
