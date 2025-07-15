@@ -1,3 +1,3 @@
 #!/bin/bash
 
-date +w"%U"
+date +W"%V"
