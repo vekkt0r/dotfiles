@@ -1,1 +1,0 @@
-../pomodoro.1s.sh

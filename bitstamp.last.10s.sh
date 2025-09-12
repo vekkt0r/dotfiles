@@ -12,7 +12,7 @@
 # by Damien Lajarretie
 # Based on Coinbase bitbar plugin by Mat Ryer
 
-btcusd=$(curl -s "https://www.bitstamp.net/api/ticker/" | egrep -o '"last": "[0-9]+(\.)?([0-9]{0,2}")?' | sed 's/"last": //' | sed 's/\"//g')
+btcusd=$(curl -s "https://www.bitstamp.net/api/ticker/" | jq -r .last)
 if awk "BEGIN {exit !($btcusd < 90000)}"; then
   color="| color=red"
 fi
