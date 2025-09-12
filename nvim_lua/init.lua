@@ -33,7 +33,13 @@ if vim.wo.diff then
 end
 
 --map('n', '<space><space>x', '<cmd>source %<CR>')
-map('n', '<space>x', ':.lua<CR>')
+map('n', '<space>x', function()
+  if vim.o.filetype == 'lua' then
+    vim.cmd '.lua'
+  else
+    vim.cmd 'JupyniumExecuteSelectedCells'
+  end
+end)
 map('v', '<space>x', ':lua<CR>')
 
 map('n', '<leader>/', 'gcc', { desc = 'toggle comment', remap = true })
@@ -66,6 +72,13 @@ map('n', '<leader>rl', ':MoltenEvaluateLine<CR>', { silent = true, desc = 'evalu
 map('n', '<leader>rr', ':MoltenReevaluateCell<CR>', { silent = true, desc = 're-evaluate cell' })
 map('v', '<leader>r', ':<C-u>MoltenEvaluateVisual<CR>gv', { silent = true, desc = 'evaluate visual selection' })
 map({ 'n', 'v' }, '<leader>ro', ':noautocmd MoltenEnterOutput<CR>', { silent = true, desc = 'show/enter output' })
+
+-- Jupynium
+map('n', '<leader>jS', ':JupyniumStartAndAttachToServer<CR>', { silent = true, desc = 'Start backend' })
+map('n', '<leader>jc', ':JupyniumClearSelectedCellsOutputs<CR>', { silent = true, desc = 'Clear current cell output' })
+map('n', '<leader>js', function()
+  vim.cmd 'JupyniumStartSync'
+end, { silent = true, desc = 'Start syncing current file' })
 
 -- Git
 

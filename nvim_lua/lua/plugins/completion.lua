@@ -29,7 +29,14 @@ return {
       },
 
       sources = {
-        default = { 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'jupynium', 'lsp', 'path', 'snippets', 'buffer' },
+        providers = {
+          jupynium = {
+            name = 'Jupynium',
+            module = 'jupynium.blink_cmp',
+            score_offset = 100,
+          },
+        },
       },
 
       signature = { enabled = true },
