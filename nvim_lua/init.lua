@@ -48,7 +48,7 @@ map('n', '<leader>s', ':bp<CR>')
 local builtin = require 'fzf-lua'
 map('n', '<leader><leader>', builtin.buffers)
 map('n', '<leader>fr', builtin.resume)
-map('n', '<leader>A', builtin.grep_cword)
+map('n', '<leader>fw', builtin.grep_cword)
 -- map('n', '<leader>ff', builtin.find_files)
 map('n', '<leader>ff', builtin.files)
 map('n', '<leader>fg', builtin.lines)
