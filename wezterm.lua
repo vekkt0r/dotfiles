@@ -2,8 +2,9 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
-config.font = wezterm.font("Hack Nerd Font")
+config.font = wezterm.font("Hack Nerd Font Mono")
 config.hide_tab_bar_if_only_one_tab = true
+config.window_close_confirmation = "NeverPrompt"
 config.key_tables = {
 	copy_mode = wezterm.gui.default_key_tables().copy_mode,
 }
