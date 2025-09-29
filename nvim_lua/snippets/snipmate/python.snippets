@@ -6,6 +6,15 @@ snippet cell Jupyter cell
 	# %%
 	${1}
 
+snippet jupyter Jupyter boilerplate
+	# %%
+	from itables import init_notebook_mode
+	init_notebook_mode(all_interactive=True)
+	%matplotlib notebook
+
+	# %%
+	${1}
+
 snippet argparse "argparse boilerplate"
 	import argparse
 	

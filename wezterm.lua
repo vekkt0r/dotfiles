@@ -39,6 +39,16 @@ config.keys = {
 		mods = "ALT",
 		action = wezterm.action.SendKey({ key = ".", mods = "ALT" }),
 	},
+	{
+		key = "Enter",
+		mods = "ALT",
+		action = wezterm.action.SendKey({ key = "Enter", mods = "ALT" }),
+	},
+	{
+		key = "Enter",
+		mods = "SHIFT",
+		action = wezterm.action.SendKey({ key = "Enter", mods = "SHIFT" }),
+	},
 }
 
 config.use_ime = false

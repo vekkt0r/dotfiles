@@ -29,12 +29,16 @@ return {
       },
 
       sources = {
-        default = { 'jupynium', 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'neopyter', 'lsp', 'path', 'snippets', 'buffer' },
+        per_filetype = {
+          python = { inherit_defaults = true, 'neopyter' },
+        },
         providers = {
-          jupynium = {
-            name = 'Jupynium',
-            module = 'jupynium.blink_cmp',
-            score_offset = 100,
+          neopyter = {
+            name = 'Neopyter',
+            module = 'neopyter.blink',
+            ---@type neopyter.BlinkCompleterOption
+            opts = {},
           },
         },
       },

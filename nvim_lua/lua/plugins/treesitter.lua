@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'r', 'query', 'vim', 'vimdoc' },
       sync_install = false,
       auto_install = true,
       modules = {},
@@ -29,7 +29,8 @@ return {
           enable = true,
           lookahead = true,
           keymaps = {
-            ['ib'] = { query = '@cell.outer', desc = 'Jupytext cell' },
+            ['aj'] = { query = '@cell.outer', desc = 'Select cell' },
+            ['ij'] = { query = '@cellcontent', desc = 'Select cell contents' },
             ['if'] = { query = '@function.inner', desc = 'Inside function' },
             ['af'] = { query = '@function.outer', desc = 'Around function' },
             ['ip'] = { query = '@parameter.inner', desc = 'Inside parameter' },
