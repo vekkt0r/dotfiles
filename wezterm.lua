@@ -49,6 +49,8 @@ config.keys = {
 		mods = "SHIFT",
 		action = wezterm.action.SendKey({ key = "Enter", mods = "SHIFT" }),
 	},
+	{ key = "-", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+	{ key = "=", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
 }
 
 config.use_ime = false
