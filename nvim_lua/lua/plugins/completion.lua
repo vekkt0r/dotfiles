@@ -29,7 +29,7 @@ return {
       },
 
       sources = {
-        default = { 'neopyter', 'lsp', 'path', 'snippets', 'buffer' },
+        default = { 'neopyter', 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
         per_filetype = {
           python = { inherit_defaults = true, 'neopyter' },
         },
