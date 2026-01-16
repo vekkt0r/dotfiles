@@ -1,5 +1,5 @@
 snippet ifmain "ifmain"
-	if __name__ == '__main__':
+	if __name__ == "__main__":
 		${1:main()}
 
 snippet cell Jupyter cell
@@ -17,11 +17,13 @@ snippet jupyter Jupyter boilerplate
 
 snippet argparse "argparse boilerplate"
 	import argparse
-	
-	parser = argparse.ArgumentParser(description='$1')
-	parser.add_argument('${2:input}', nargs='?', help='${3:Input files}')
-	# parser.add_argument('--flag', action='store_true', help='')
-	
+	from pathlib import Path
+
+	parser = argparse.ArgumentParser(description="$1")
+	parser.add_argument("${2:input}", nargs="?", help="${3:Input files}")
+	# parser.add_argument("--flag", action="store_true", help="")
+	# parser.add_argument("--flag", type=Path, help="")
+
 	args = parser.parse_args()
-	
+
 	$0
