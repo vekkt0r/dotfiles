@@ -33,14 +33,14 @@ if vim.wo.diff then
 end
 
 --map('n', '<space><space>x', '<cmd>source %<CR>')
-map('n', '<space>x', function()
+map('n', '<space>X', function()
   if vim.o.filetype == 'lua' then
     vim.cmd '.lua'
   else
     vim.cmd 'JupyniumExecuteSelectedCells'
   end
 end)
-map('v', '<space>x', ':lua<CR>')
+map('v', '<space>X', ':lua<CR>')
 
 map('n', '<leader>/', 'gcc', { desc = 'toggle comment', remap = true })
 map('v', '<leader>/', 'gc', { desc = 'toggle comment', remap = true })
@@ -107,3 +107,15 @@ for k, v in pairs(git_commands) do
     term(v.cmd, v.args, v.keep)
   end, { desc = 'Git ' .. k })
 end
+
+map('t', '<C-M-h>', '<C-\\><C-n>:NvimTmuxNavigateLeft<CR>')
+map('t', '<C-M-j>', '<C-\\><C-n>:NvimTmuxNavigateDown<CR>')
+map('t', '<C-M-k>', '<C-\\><C-n>:NvimTmuxNavigateUp<CR>')
+map('t', '<C-M-l>', '<C-\\><C-n>:NvimTmuxNavigateRight<CR>')
+map('t', '<C-M-l>', '<C-\\><C-n>:NvimTmuxNavigateRight<CR>')
+vim.api.nvim_create_autocmd('TermOpen', {
+  pattern = 'term://*',
+  callback = function()
+    vim.keymap.set('n', '<Esc>', 'i', { buffer = true })
+  end,
+})

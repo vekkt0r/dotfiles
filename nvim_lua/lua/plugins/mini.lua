@@ -12,7 +12,7 @@ return {
     require('mini.bufremove').setup()
 
     local bufremove = require 'mini.bufremove'
-    vim.keymap.set('n', '<leader>d', bufremove.delete, { desc = 'Remove buffer' })
+    vim.keymap.set('n', '<leader>x', bufremove.delete, { desc = 'Remove buffer' })
 
     local trailspace = require 'mini.trailspace'
     trailspace.setup {}
