@@ -40,4 +40,8 @@ $os\
 $container\
 $netns\
 $shell\
+$python\
 $character"""
+
+[python]
+format = '\(${virtualenv}\) '
