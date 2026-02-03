@@ -19,7 +19,7 @@ return {
       -- Disable "format_on_save lsp_fallback" for languages that don't
       -- have a well standardized coding style. You can add additional
       -- languages here or re-enable it for the disabled ones.
-      local disable_filetypes = { python = true }
+      local disable_filetypes = { python = false }
       local lsp_format_opt
       if disable_filetypes[vim.bo[bufnr].filetype] then
         return
@@ -33,7 +33,7 @@ return {
     end,
     formatters_by_ft = {
       lua = { 'stylua' },
-      python = { 'autopep8' },
+      python = { 'ruff format' },
       cpp = { 'clang-format' },
       c = { 'clang-format' },
     },
