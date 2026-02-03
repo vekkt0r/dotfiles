@@ -6,7 +6,7 @@ return {
   },
   config = function()
     require('nvim-treesitter.configs').setup {
-      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'r', 'query', 'vim', 'vimdoc' },
+      ensure_installed = { 'bash', 'c', 'diff', 'html', 'lua', 'luadoc', 'markdown', 'markdown_inline', 'python', 'r', 'query', 'vim', 'vimdoc', 'yaml' },
       sync_install = false,
       auto_install = true,
       modules = {},

@@ -80,6 +80,10 @@ map('n', '<leader>js', function()
   vim.cmd 'JupyniumStartSync'
 end, { silent = true, desc = 'Start syncing current file' })
 
+-- CodeCompanion
+vim.cmd [[cab cc CodeCompanion]]
+map('n', '<leader>cc', ':CodeCompanionChat<CR>', { silent = true, desc = 'Open CodeCompanionChat buffer' })
+
 -- Git
 
 local term = function(cmd, args, keep)

@@ -32,7 +32,15 @@ return {
           end,
         },
       },
+      display = {
+        chat = {
+          window = {
+            layout = 'float',
+          },
+        },
+      },
       opts = {
+        stream = false,
         log_level = 'DEBUG', -- or "TRACE"
       },
     },
