@@ -112,6 +112,7 @@ for k, v in pairs(git_commands) do
   end, { desc = 'Git ' .. k })
 end
 
+-- Terminal specific
 map('t', '<C-M-h>', '<C-\\><C-n>:NvimTmuxNavigateLeft<CR>')
 map('t', '<C-M-j>', '<C-\\><C-n>:NvimTmuxNavigateDown<CR>')
 map('t', '<C-M-k>', '<C-\\><C-n>:NvimTmuxNavigateUp<CR>')
@@ -121,5 +122,6 @@ vim.api.nvim_create_autocmd('TermOpen', {
   pattern = 'term://*',
   callback = function()
     vim.keymap.set('n', '<Esc>', 'i', { buffer = true })
+    vim.keymap.set('n', '<C-p>', 'i<C-p>', { buffer = true })
   end,
 })
