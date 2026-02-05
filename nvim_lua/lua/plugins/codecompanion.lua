@@ -40,7 +40,7 @@ return {
         },
       },
       opts = {
-        stream = false,
+        stream = true,
         log_level = 'DEBUG', -- or "TRACE"
       },
     },
