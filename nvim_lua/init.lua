@@ -82,7 +82,7 @@ end, { silent = true, desc = 'Start syncing current file' })
 
 -- CodeCompanion
 vim.cmd [[cab cc CodeCompanion]]
-map('n', '<leader>cc', ':CodeCompanionChat<CR>', { silent = true, desc = 'Open CodeCompanionChat buffer' })
+map('n', '<leader>cc', ':CodeCompanionChat Toggle<CR>', { silent = true, desc = 'Open CodeCompanionChat buffer' })
 
 -- Git
 
