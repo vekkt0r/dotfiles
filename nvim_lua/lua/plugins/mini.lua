@@ -1,5 +1,5 @@
 return {
-  'echasnovski/mini.nvim',
+  'nvim-mini/mini.nvim',
   version = false,
   config = function()
     local statusline = require 'mini.statusline'
@@ -32,7 +32,8 @@ return {
     require('mini.ai').setup {
       n_lines = 500,
       custom_textobjects = {
-        F = spec_treesitter { a = '@function.outer', i = '@function.inner' },
+        f = spec_treesitter { a = '@function.outer', i = '@function.inner' },
+        c = spec_treesitter { a = '@class.outer', i = '@class.inner' },
         o = spec_treesitter {
           a = { '@conditional.outer', '@loop.outer' },
           i = { '@conditional.inner', '@loop.inner' },

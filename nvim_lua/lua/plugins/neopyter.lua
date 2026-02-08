@@ -8,6 +8,9 @@ return {
   ft = 'python',
   ---@type neopyter.Option
   opts = {
+    textobject = {
+      enable = false,
+    },
     on_attach = function(buf)
       local function map(mode, lhs, rhs, desc)
         vim.keymap.set(mode, lhs, rhs, { desc = desc, buffer = buf })
