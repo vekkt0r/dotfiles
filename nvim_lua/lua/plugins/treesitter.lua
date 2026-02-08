@@ -13,9 +13,18 @@ return {
       ignore_install = {},
       highlight = {
         enable = true,
-        additional_vim_regex_highlighting = false,
+      },
+      incremental_selection = {
+        enable = true,
+        init_selection = 'gnn',
+        node_inremental = 'grn',
+        scope_incremental = 'grc',
+        node_decremental = 'grm',
       },
       textobjects = {
+        select = {
+          enable = true,
+        },
         move = {
           enable = true,
           goto_next_start = {
@@ -23,18 +32,6 @@ return {
           },
           goto_previous_start = {
             ['[j'] = { query = '@cell.start', desc = 'Prev cell start' },
-          },
-        },
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ['aj'] = { query = '@cell.outer', desc = 'Select cell' },
-            ['ij'] = { query = '@cellcontent', desc = 'Select cell contents' },
-            ['if'] = { query = '@function.inner', desc = 'Inside function' },
-            ['af'] = { query = '@function.outer', desc = 'Around function' },
-            ['ip'] = { query = '@parameter.inner', desc = 'Inside parameter' },
-            ['ap'] = { query = '@parameter.outer', desc = 'Around parameter' },
           },
         },
       },
