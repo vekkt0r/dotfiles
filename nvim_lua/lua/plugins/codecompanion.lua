@@ -4,7 +4,7 @@ return {
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
-      'franco-ruggeri/codecompanion-spinner.nvim',
+      'j-hui/fidget.nvim',
     },
     opts = {
       interactions = {
@@ -44,12 +44,10 @@ return {
         stream = true,
         log_level = 'DEBUG', -- or "TRACE"
       },
-      extensions = {
-        spinner = {},
-      },
     },
     config = function(_, opts)
       require('codecompanion').setup(opts)
+      require('plugins.codecompanion.fidget-spinner'):init()
     end,
   },
 }
