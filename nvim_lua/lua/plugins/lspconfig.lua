@@ -44,6 +44,9 @@ return {
       },
     }
 
+    -- Assume installed outside Mason, currently not available
+    vim.lsp.enable 'starpls'
+
     -- highlight on hover
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('kickstart-lsp-attach', { clear = true }),
