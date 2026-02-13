@@ -24,11 +24,11 @@ return {
                 api_key = 'ABACUS_API_KEY',
                 chat_url = '/v1/chat/completions',
               },
-              -- schema = {
-              --   model = {
-              --     default = 'anthropic/claude-4.5-sonnet',
-              --   },
-              -- },
+              schema = {
+                model = {
+                  default = 'grok-code-fast-1',
+                },
+              },
             })
           end,
         },
