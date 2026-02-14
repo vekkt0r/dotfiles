@@ -49,6 +49,14 @@ map('v', '<leader>/', 'gc', { desc = 'toggle comment', remap = true })
 map('n', '<leader>a', ':bn<CR>')
 map('n', '<leader>s', ':bp<CR>')
 
+-- Redirect Ex command to buffer
+vim.api.nvim_exec(
+  [[
+command! -nargs=* -complete=command Redirect <mods> new | setl nonu nolist noswf bh=wipe bt=nofile | call append(0, split(execute(<q-args>), "\n"))
+]],
+  false
+)
+
 -- Telescope
 -- local builtin = require 'telescope.builtin'
 local builtin = require 'fzf-lua'
@@ -83,6 +91,7 @@ end, { silent = true, desc = 'Start syncing current file' })
 -- CodeCompanion
 vim.cmd [[cab cc CodeCompanion]]
 map('n', '<leader>cc', ':CodeCompanionChat Toggle<CR>', { silent = true, desc = 'Open CodeCompanionChat buffer' })
+map('n', '<leader>cn', ':CodeCompanionChat<CR>', { silent = true, desc = 'Open new CodeCompanionChat buffer' })
 
 -- Git
 
