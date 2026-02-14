@@ -20,6 +20,7 @@ require 'config.lazy'
 
 vim.opt.shiftwidth = 4
 vim.opt.ignorecase = true
+vim.opt.winborder = 'rounded'
 
 map('i', 'jk', '<ESC>')
 map('i', 'kj', '<ESC>')
@@ -48,6 +49,12 @@ map('v', '<leader>/', 'gc', { desc = 'toggle comment', remap = true })
 -- Buffer navigation helpers
 map('n', '<leader>a', ':bn<CR>')
 map('n', '<leader>s', ':bp<CR>')
+
+vim.diagnostic.config {
+  float = {
+    border = 'single',
+  },
+}
 
 -- Redirect Ex command to buffer
 vim.api.nvim_exec(
@@ -98,7 +105,7 @@ map('n', '<leader>cn', ':CodeCompanionChat<CR>', { silent = true, desc = 'Open n
 local term = function(cmd, args, keep)
   args = args or vim.fn.expand '%'
   args = type(args) == 'function' and args() or args
-  require('snacks').terminal.open(cmd .. ' ' .. args, { auto_close = not keep })
+  require('snacks').terminal.open(cmd .. ' ' .. args, { auto_close = not keep, win = { border = 'rounded' } })
 end
 
 local git_commands = {
