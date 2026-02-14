@@ -36,6 +36,7 @@ return {
       python = { 'ruff format' },
       cpp = { 'clang-format' },
       c = { 'clang-format' },
+      bzl = { 'buildifier' },
     },
   },
 }

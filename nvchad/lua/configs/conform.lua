@@ -4,6 +4,7 @@ local options = {
     python = { "autopep8" },
     cpp = { "clang-format" },
     c = { "clang-format" },
+    bzl = { "buildifier" },
   },
 
   format_on_save = function(bufnr)
