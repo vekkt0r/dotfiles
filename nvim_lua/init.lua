@@ -78,7 +78,7 @@ map('n', '<leader>fo', builtin.oldfiles)
 
 -- lsp
 map('n', '<leader>m', ':lua vim.lsp.buf.code_action()<CR>')
-map('n', '<Leader>o', '<Cmd>ClangdSwitchSourceHeader<CR>')
+map('n', '<Leader>o', '<Cmd>LspClangdSwitchSourceHeader<CR>')
 
 -- Molten
 map('n', '<leader>mi', ':MoltenInit<CR>', { silent = true, desc = 'Initialize the plugin' })
