@@ -38,7 +38,14 @@ return {
     -- require('mini.completion').setup()
     require('mini.comment').setup()
     require('mini.pairs').setup()
-    require('mini.surround').setup()
+    require('mini.surround').setup {
+      custom_surroundings = {
+        ['{'] = {
+          input = { '%b{}' },
+          output = { left = '{\n', right = '\n}' },
+        },
+      },
+    }
     require('mini.bufremove').setup()
 
     local bufremove = require 'mini.bufremove'
