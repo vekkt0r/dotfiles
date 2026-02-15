@@ -18,6 +18,10 @@ return {
       },
       adapters = {
         http = {
+          -- opts = {
+          --   proxy = 'http://127.0.0.1:8080',
+          --   allow_insecure = true,
+          -- },
           abacus = function()
             return require('codecompanion.adapters').extend('openai_compatible', {
               env = {
@@ -44,6 +48,16 @@ return {
       opts = {
         stream = true,
         log_level = 'DEBUG', -- or "TRACE"
+      },
+      extensions = {
+        mcphub = {
+          callback = 'mcphub.extensions.codecompanion',
+          opts = {
+            make_tools = true,
+            add_mcp_prefix_to_tool_names = true,
+            show_results_in_chat = true,
+          },
+        },
       },
     },
     config = function(_, opts)
