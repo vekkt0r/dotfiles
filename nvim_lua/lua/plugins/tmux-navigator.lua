@@ -2,6 +2,7 @@ return {
   {
     'alexghergh/nvim-tmux-navigation',
     --event = 'User FilePost',
+    enabled = false,
     config = function()
       require('nvim-tmux-navigation').setup {
         keybindings = {

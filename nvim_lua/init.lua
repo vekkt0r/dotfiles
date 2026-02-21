@@ -128,11 +128,6 @@ for k, v in pairs(git_commands) do
 end
 
 -- Terminal specific
-map('t', '<C-M-h>', '<C-\\><C-n>:NvimTmuxNavigateLeft<CR>')
-map('t', '<C-M-j>', '<C-\\><C-n>:NvimTmuxNavigateDown<CR>')
-map('t', '<C-M-k>', '<C-\\><C-n>:NvimTmuxNavigateUp<CR>')
-map('t', '<C-M-l>', '<C-\\><C-n>:NvimTmuxNavigateRight<CR>')
-map('t', '<C-M-l>', '<C-\\><C-n>:NvimTmuxNavigateRight<CR>')
 vim.api.nvim_create_autocmd('TermOpen', {
   pattern = 'term://*',
   callback = function()
