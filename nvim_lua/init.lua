@@ -11,14 +11,13 @@ o.updatetime = 500
 local map = vim.keymap.set
 
 -- TODO:
--- path completion
--- snippets
--- goto closed file
 -- format on save
 
 require 'config.lazy'
 
-vim.opt.shiftwidth = 4
+vim.opt.shiftwidth = 2
+vim.opt.expandtab = true
+vim.opt.softtabstop = -1
 vim.opt.ignorecase = true
 vim.opt.winborder = 'rounded'
 
