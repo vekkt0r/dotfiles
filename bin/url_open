@@ -1,0 +1,3 @@
+#!/bin/bash
+
+printf '\033Ptmux;\033\033]1337;SetUserVar=open_url=%s\007\033\\' $(echo -n "$1" | base64)

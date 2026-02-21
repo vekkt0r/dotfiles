@@ -3,7 +3,7 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 -- config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" })
-config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "DemiBold" })
+config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
 config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = "NeverPrompt"
 config.key_tables = {
@@ -55,5 +55,15 @@ config.keys = {
 }
 
 config.use_ime = false
+
+wezterm.on("user-var-changed", function(window, pane, name, value)
+	if name == "open_url" then
+		if value:match("^https?://") or value:match("^file://") then
+			wezterm.open_with(value)
+		else
+			window:toast_notification("wezterm", "Ignore open_url for " .. value, nil, 4000)
+		end
+	end
+end)
 
 return config
