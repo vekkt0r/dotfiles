@@ -4,6 +4,8 @@ local config = wezterm.config_builder()
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 -- config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
+config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
 config.window_close_confirmation = "NeverPrompt"
 config.key_tables = {
@@ -52,6 +54,10 @@ config.keys = {
 	},
 	{ key = "-", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
 	{ key = "=", mods = "CTRL", action = wezterm.action.DisableDefaultAssignment },
+	{ key = "h", mods = "CTRL|ALT", action = wezterm.action.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "CTRL|ALT", action = wezterm.action.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "CTRL|ALT", action = wezterm.action.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "CTRL|ALT", action = wezterm.action.ActivatePaneDirection("Right") },
 }
 
 config.use_ime = false
@@ -65,5 +71,9 @@ wezterm.on("user-var-changed", function(window, pane, name, value)
 		end
 	end
 end)
+
+config.ssh_domains = {
+	{ name = "buildarn", remote_address = "buildarn", username = "adam" },
+}
 
 return config
