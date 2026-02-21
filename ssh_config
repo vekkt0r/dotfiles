@@ -4,3 +4,7 @@ Host r4
     HostName 192.168.0.93
     User adam
 
+Host buildarn
+    HostName 192.168.0.203
+    User adam
+

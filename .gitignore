@@ -4,3 +4,4 @@ nushell/history.txt
 oh-my-zsh
 .DS_Store
 *.swp
+fish/fish_variables
