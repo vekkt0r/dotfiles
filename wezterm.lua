@@ -4,9 +4,8 @@ local config = wezterm.config_builder()
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 -- config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
-config.use_fancy_tab_bar = false
-config.tab_bar_at_bottom = true
 config.hide_tab_bar_if_only_one_tab = true
+config.tab_bar_at_bottom = true
 config.window_close_confirmation = "NeverPrompt"
 config.key_tables = {
   copy_mode = wezterm.gui.default_key_tables().copy_mode,
@@ -22,6 +21,64 @@ table.insert(config.key_tables.copy_mode, {
   }),
 })
 
+-- Plugins
+--
+local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm.git")
+local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+local function temperature()
+  local now = os.time()
+  local cached = wezterm.GLOBAL.temperature
+  if cached and cached.timestamp and (now - cached.timestamp) < 600 then
+    return cached.value
+  end
+  local handle = io.popen("~/src/dotfiles/temperatur.nu.sh")
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    local temp = result:gsub("%s+", "")
+    wezterm.GLOBAL.temperature = { value = temp, timestamp = now }
+    return temp
+  else
+    return "N/A"
+  end
+end
+
+if not require("tabline.config").component_opts then -- only init once
+  local get_mode = require("tabline.components.window.mode").get
+  local mode_with_leader = function(window)
+    if window:leader_is_active() then
+      return "leader_mode"
+    else
+      return get_mode(window)
+    end
+  end
+  require("tabline.components.window.mode").get = mode_with_leader
+end
+
+tabline.setup({
+  options = {
+    icons_enabled = false,
+    section_separators = "",
+    component_separators = "",
+    tab_separators = "",
+    theme_overrides = {
+      leader_mode = {
+        a = { fg = "#000000", bg = "#ff0000" },
+        b = { fg = "#000000", bg = "#ff0000" },
+        c = { fg = "#000000", bg = "#ff0000" },
+      },
+    },
+  },
+  sections = {
+    tabline_b = { "workspace", icons_enabled = false },
+    tabline_x = { temperature },
+    tabline_y = { os.date(" %H:%M | W%V ") },
+  },
+})
+tabline.apply_to_config(config)
+
+-- Key bindings
+--
 local function is_vim(pane)
   -- this is set by the plugin, and unset on ExitPre in Neovim
   if pane:get_user_vars().IS_NVIM == "true" then
@@ -136,6 +193,42 @@ config.keys = {
         end
       end),
     }),
+  },
+  -- resurrect
+  {
+    key = "S",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      win:toast_notification("wezterm", "Saving resurrect state", nil, 4000)
+      resurrect.state_manager.save_state(resurrect.workspace_state.get_workspace_state())
+      resurrect.window_state.save_window_action()
+    end),
+  },
+  {
+    key = "r",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(win, pane)
+      resurrect.fuzzy_loader.fuzzy_load(win, pane, function(id, label)
+        local type = string.match(id, "^([^/]+)") -- match before '/'
+        id = string.match(id, "([^/]+)$") -- match after '/'
+        id = string.match(id, "(.+)%..+$") -- remove file extention
+        local opts = {
+          relative = true,
+          restore_text = true,
+          on_pane_restore = resurrect.tab_state.default_on_pane_restore,
+        }
+        if type == "workspace" then
+          local state = resurrect.state_manager.load_state(id, "workspace")
+          resurrect.workspace_state.restore_workspace(state, opts)
+        elseif type == "window" then
+          local state = resurrect.state_manager.load_state(id, "window")
+          resurrect.window_state.restore_window(pane:window(), state, opts)
+        elseif type == "tab" then
+          local state = resurrect.state_manager.load_state(id, "tab")
+          resurrect.tab_state.restore_tab(pane:tab(), state, opts)
+        end
+      end)
+    end),
   },
   -- move between split panes
   split_nav("move", "h"),
