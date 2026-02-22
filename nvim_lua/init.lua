@@ -11,7 +11,6 @@ o.updatetime = 500
 local map = vim.keymap.set
 
 -- TODO:
--- format on save
 
 require 'config.lazy'
 

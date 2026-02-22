@@ -49,16 +49,7 @@ return {
         stream = true,
         log_level = 'DEBUG', -- or "TRACE"
       },
-      extensions = {
-        mcphub = {
-          callback = 'mcphub.extensions.codecompanion',
-          opts = {
-            make_tools = true,
-            add_mcp_prefix_to_tool_names = true,
-            show_results_in_chat = true,
-          },
-        },
-      },
+      extensions = {},
     },
     config = function(_, opts)
       require('codecompanion').setup(opts)
