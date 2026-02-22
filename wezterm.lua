@@ -1,6 +1,9 @@
 local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
+-- TODO:
+-- Better tab names, check process completion
+
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 -- config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
@@ -43,6 +46,7 @@ local function temperature()
   end
 end
 
+-- Custom mode indicator for leader
 if not require("tabline.config").component_opts then -- only init once
   local get_mode = require("tabline.components.window.mode").get
   local mode_with_leader = function(window)
@@ -70,6 +74,8 @@ tabline.setup({
     },
   },
   sections = {
+    tab_active = { { "index", zero_indexed = true }, { "cwd", padding = { left = 0, right = 1 } } },
+    tab_inactive = { { "index", zero_indexed = true }, { "cwd", padding = { left = 0, right = 1 } } },
     tabline_b = { "workspace", icons_enabled = false },
     tabline_x = { temperature },
     tabline_y = { os.date(" %H:%M | W%V ") },
@@ -141,7 +147,7 @@ local function load_snippets(path)
   return choices
 end
 
-config.leader = { key = "b", mods = "CTRL", timeout_milliseconds = 1000 }
+config.leader = { key = "x", mods = "CTRL", timeout_milliseconds = 1000 }
 config.keys = {
   {
     key = "b",
@@ -179,6 +185,8 @@ config.keys = {
   { key = "v", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
   { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+  { key = "n", mods = "LEADER", action = wezterm.action.ActivateTabRelative(1) },
+  { key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
   {
     key = "s",
     mods = "LEADER|CTRL",
@@ -243,11 +251,11 @@ config.keys = {
 }
 
 -- Tab navigation keys
-for i = 1, 8 do
+for i = 0, 9 do
   table.insert(config.keys, {
     key = tostring(i),
     mods = "LEADER",
-    action = wezterm.action.ActivateTab(i - 1),
+    action = wezterm.action.ActivateTab(i),
   })
 end
 
