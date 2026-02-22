@@ -11,6 +11,8 @@ o.updatetime = 500
 local map = vim.keymap.set
 
 -- TODO:
+-- format on save
+-- Fix filename trunctation in statusline
 
 require 'config.lazy'
 
