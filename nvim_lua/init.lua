@@ -11,8 +11,6 @@ o.updatetime = 500
 local map = vim.keymap.set
 
 -- TODO:
--- format on save
--- Fix filename trunctation in statusline
 
 require 'config.lazy'
 
@@ -64,15 +62,13 @@ command! -nargs=* -complete=command Redirect <mods> new | setl nonu nolist noswf
   false
 )
 
--- Telescope
--- local builtin = require 'telescope.builtin'
+-- Fzf-lua
 local builtin = require 'fzf-lua'
 map('n', '<leader><leader>', builtin.buffers)
 map('n', '<leader>fr', builtin.resume)
 map('n', '<leader>fw', builtin.grep_cword)
--- map('n', '<leader>ff', builtin.find_files)
 map('n', '<leader>ff', builtin.files)
-map('n', '<leader>fg', builtin.lines)
+map('n', '<leader>fg', builtin.grep_project)
 map('n', '<leader>fo', builtin.oldfiles)
 -- map('n', '<leader>fh', builtin.help_tags)
 

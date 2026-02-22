@@ -14,20 +14,18 @@ return {
               for _, sel in ipairs(selected) do
                 local entry = path.entry_to_file(sel, opts)
                 if entry.bufnr then
-                  -- if
-                  --   not utils.buffer_is_dirty(entry.bufnr, true, false)
-                  --   or vim.api.nvim_buf_call(entry.bufnr, function()
-                  --     return utils.save_dialog(entry.bufnr)
-                  --   end)
-                  -- then
                   bufremove.delete(entry.bufnr)
-                  -- vim.api.nvim_buf_delete(entry.bufnr, { force = true })
-                  -- end
                 end
               end
             end,
             reload = true,
           },
+        },
+      },
+      keymap = {
+        builtin = {
+          ['<C-j>'] = 'preview-down',
+          ['<C-k>'] = 'preview-up',
         },
       },
     }
