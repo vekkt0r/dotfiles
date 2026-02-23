@@ -68,7 +68,7 @@ map('n', '<leader><leader>', builtin.buffers)
 map('n', '<leader>fr', builtin.resume)
 map('n', '<leader>fw', builtin.grep_cword)
 map('n', '<leader>ff', builtin.files)
-map('n', '<leader>fg', builtin.grep_project)
+map('n', '<leader>fg', builtin.live_grep)
 map('n', '<leader>fo', builtin.oldfiles)
 -- map('n', '<leader>fh', builtin.help_tags)
 

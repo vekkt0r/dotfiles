@@ -24,8 +24,8 @@ return {
       },
       keymap = {
         builtin = {
-          ['<C-j>'] = 'preview-down',
-          ['<C-k>'] = 'preview-up',
+          ['<C-d>'] = 'preview-page-down',
+          ['<C-u>'] = 'preview-page-up',
         },
       },
     }
