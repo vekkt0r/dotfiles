@@ -28,19 +28,26 @@ table.insert(config.key_tables.copy_mode, {
 --
 local resurrect = wezterm.plugin.require("https://github.com/MLFlexer/resurrect.wezterm.git")
 local tabline = wezterm.plugin.require("https://github.com/michaelbrusegard/tabline.wez")
+
 local function temperature()
   local now = os.time()
   local cached = wezterm.GLOBAL.temperature
   if cached and cached.timestamp and (now - cached.timestamp) < 600 then
     return cached.value
   end
-  local handle = io.popen("~/src/dotfiles/temperatur.nu.sh")
+  local handle =
+    io.popen("curl -s 'http://api.temperatur.nu/tnu_1.12.php?p=valla&verbose&cli=" .. math.random(100000) .. "'")
   if handle then
     local result = handle:read("*a")
     handle:close()
-    local temp = result:gsub("%s+", "")
-    wezterm.GLOBAL.temperature = { value = temp, timestamp = now }
-    return temp
+    local temp_match = result:match("<temp>(.-)</temp>")
+    if temp_match then
+      local temp = temp_match .. "°"
+      wezterm.GLOBAL.temperature = { value = temp, timestamp = now }
+      return temp
+    else
+      return "N/A"
+    end
   else
     return "N/A"
   end
@@ -78,7 +85,7 @@ tabline.setup({
     tab_inactive = { { "index", zero_indexed = true }, { "cwd", padding = { left = 0, right = 1 } } },
     tabline_b = { "workspace", icons_enabled = false },
     tabline_x = { temperature },
-    tabline_y = { os.date(" %H:%M | W%V ") },
+    tabline_y = { wezterm.strftime(" %H:%M | W%V ") },
   },
 })
 tabline.apply_to_config(config)
@@ -187,6 +194,7 @@ config.keys = {
   { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
   { key = "n", mods = "LEADER", action = wezterm.action.ActivateTabRelative(1) },
   { key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
+  { key = "l", mods = "LEADER", action = wezterm.action.ActivateLastTab },
   {
     key = "s",
     mods = "LEADER|CTRL",
