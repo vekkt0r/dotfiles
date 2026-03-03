@@ -49,6 +49,13 @@ return {
         stream = true,
         log_level = 'DEBUG', -- or "TRACE"
       },
+      prompt_library = {
+        markdown = {
+          dirs = {
+            '~/src/dotfiles/nvim_lua/lua/plugins/codecompanion/prompts',
+          },
+        },
+      },
       extensions = {},
     },
     config = function(_, opts)
