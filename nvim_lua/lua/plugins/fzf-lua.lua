@@ -22,6 +22,11 @@ return {
           },
         },
       },
+      previewers = {
+        builtin = {
+          snacks_image = { enabled = false },
+        },
+      },
       keymap = {
         builtin = {
           ['<C-d>'] = 'preview-page-down',
