@@ -1,4 +1,4 @@
-alias gh='git rev-parse HEAD'
+alias gr='git rev-parse HEAD'
 alias gst='git status'
 
 alias gc='git commit -v'
