@@ -70,6 +70,7 @@ map('n', '<leader>fw', builtin.grep_cword)
 map('n', '<leader>ff', builtin.files)
 map('n', '<leader>fg', builtin.live_grep)
 map('n', '<leader>fo', builtin.oldfiles)
+map('n', '<leader>fs', builtin.git_status)
 -- map('n', '<leader>fh', builtin.help_tags)
 
 -- lsp
