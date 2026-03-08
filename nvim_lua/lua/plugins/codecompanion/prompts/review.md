@@ -2,6 +2,8 @@
 name: Code Review
 interaction: chat
 description: Review code changes
+opts:
+  alias: review
 ---
 
 ## user

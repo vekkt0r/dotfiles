@@ -15,6 +15,19 @@ return {
         inline = {
           adapter = 'abacus',
         },
+        shared = {
+          keymaps = {
+            always_accept = {
+              modes = { n = 'gda' },
+            },
+            accept_change = {
+              modes = { n = 'gdo' },
+            },
+            reject_change = {
+              modes = { n = 'gdr' },
+            },
+          },
+        },
       },
       adapters = {
         http = {
