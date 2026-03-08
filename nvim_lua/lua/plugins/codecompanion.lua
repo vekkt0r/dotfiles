@@ -31,7 +31,7 @@ return {
               },
               schema = {
                 model = {
-                  default = 'grok-code-fast-1',
+                  default = 'deepseek-ai/DeepSeek-V3.2',
                 },
               },
             })
