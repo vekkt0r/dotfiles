@@ -4,6 +4,15 @@ local config = wezterm.config_builder()
 -- TODO:
 -- Better tab names, check process completion
 
+local function merge(base, overrides)
+  local ret = base or {}
+  local second = overrides or {}
+  for _, v in pairs(second) do
+    table.insert(ret, v)
+  end
+  return ret
+end
+
 config.color_scheme = "Solarized (dark) (terminal.sexy)"
 -- config.font = wezterm.font("Hack Nerd Font Mono", { weight = "Regular" })
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
@@ -12,16 +21,31 @@ config.tab_bar_at_bottom = true
 config.window_close_confirmation = "NeverPrompt"
 config.key_tables = {
   copy_mode = wezterm.gui.default_key_tables().copy_mode,
+  search_mode = wezterm.gui.default_key_tables().search_mode,
 }
-table.insert(config.key_tables.copy_mode, {
-  key = "Y",
-  mods = "SHIFT",
-  action = wezterm.action.Multiple({
-    { CopyTo = "ClipboardAndPrimarySelection" },
-    { CopyMode = "Close" },
-    { PasteFrom = "PrimarySelection" },
-    { CopyMode = "ClearSelectionMode" },
-  }),
+
+config.key_tables.copy_mode = merge(config.key_tables.copy_mode, {
+  {
+    key = "Y",
+    mods = "SHIFT",
+    action = wezterm.action.Multiple({
+      wezterm.action.CopyTo("ClipboardAndPrimarySelection"),
+      wezterm.action.CopyMode("Close"),
+      wezterm.action.PasteFrom("PrimarySelection"),
+      wezterm.action.CopyMode("ClearSelectionMode"),
+    }),
+  },
+  { key = "/", mods = "NONE", action = wezterm.action({ Search = { CaseSensitiveString = "" } }) },
+  -- navigate any search mode results
+  { key = "n", mods = "NONE", action = wezterm.action({ CopyMode = "NextMatch" }) },
+  { key = "p", mods = "NONE", action = wezterm.action({ CopyMode = "PriorMatch" }) },
+  { key = "u", mods = "CTRL", action = wezterm.action({ CopyMode = "ClearPattern" }) },
+})
+config.key_tables.search_mode = merge(config.key_tables.search_mode, {
+  { key = "Escape", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
+  -- Go back to copy mode when pressing enter, so that we can use unmodified keys like "n"
+  -- to navigate search results without conflicting with typing into the search area.
+  { key = "Enter", mods = "NONE", action = "ActivateCopyMode" },
 })
 
 -- Plugins
@@ -191,7 +215,22 @@ config.keys = {
   { key = "s", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "v", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
-  { key = "[", mods = "LEADER", action = wezterm.action.ActivateCopyMode },
+  {
+    key = "[",
+    mods = "LEADER",
+    action = wezterm.action_callback(function(window, pane)
+      window:perform_action(wezterm.action.ActivateCopyMode, pane)
+      window:perform_action(
+        wezterm.action.Multiple({
+          wezterm.action.CopyMode("ClearPattern"),
+          wezterm.action.CopyMode("ClearSelectionMode"),
+          wezterm.action.CopyMode("Close"),
+        }),
+        pane
+      )
+      window:perform_action(wezterm.action.ActivateCopyMode, pane)
+    end),
+  },
   { key = "n", mods = "LEADER", action = wezterm.action.ActivateTabRelative(1) },
   { key = "p", mods = "LEADER", action = wezterm.action.ActivateTabRelative(-1) },
   { key = "l", mods = "LEADER", action = wezterm.action.ActivateLastTab },
