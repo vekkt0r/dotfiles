@@ -1,0 +1,6 @@
+#!/bin/bash
+
+title=$1
+shift 1
+
+printf "\e]777;notify;%s;%s\e\\" $title "$@"
