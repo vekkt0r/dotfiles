@@ -39,7 +39,8 @@ config.key_tables.copy_mode = merge(config.key_tables.copy_mode, {
   -- navigate any search mode results
   { key = "n", mods = "NONE", action = wezterm.action({ CopyMode = "NextMatch" }) },
   { key = "p", mods = "NONE", action = wezterm.action({ CopyMode = "PriorMatch" }) },
-  { key = "u", mods = "CTRL", action = wezterm.action({ CopyMode = "ClearPattern" }) },
+  { key = "[", mods = "NONE", action = wezterm.action.CopyMode({ MoveBackwardZoneOfType = "Output" }) },
+  { key = "]", mods = "NONE", action = wezterm.action.CopyMode({ MoveForwardZoneOfType = "Output" }) },
 })
 config.key_tables.search_mode = merge(config.key_tables.search_mode, {
   { key = "Escape", mods = "NONE", action = wezterm.action({ CopyMode = "Close" }) },
