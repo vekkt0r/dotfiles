@@ -37,6 +37,7 @@ ln -s $PWD/mutt_mailcap ~/.mutt/mailcap
 ln -s $PWD/gdbinit.dashboard ~/.gdbinit
 ln -s $PWD/fish ~/.config/fish
 ln -s $PWD/starship.toml ~/.config/starship.toml
+ln -s $PWD/gitui ~/.config
 
 if [ ! -d oh-my-zsh ]; then
   git clone --depth 1 https://github.com/robbyrussell/oh-my-zsh.git
@@ -119,7 +120,7 @@ case $unamestr in
 		    vim git jq tig python-pip python3-pip
       pip install setuptools wheel
       pip install neovim
-      pip3 install setuptools wheel 
+      pip3 install setuptools wheel
       pip3 install neovim python-language-server pycodestyle pyflakes black rope
 
       # Apt version usually very old
