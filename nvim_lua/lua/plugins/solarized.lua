@@ -26,6 +26,7 @@ return {
       on_colors = function(colors)
         colors.bg_float = colors.base03
       end,
+      terminal_colors = false,
     }
     vim.cmd 'colorscheme solarized-osaka'
   end,
