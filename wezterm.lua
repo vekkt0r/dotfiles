@@ -110,7 +110,11 @@ tabline.setup({
     tab_inactive = { { "index", zero_indexed = true }, { "cwd", padding = { left = 0, right = 1 } } },
     tabline_b = { "workspace", icons_enabled = false },
     tabline_x = { temperature },
-    tabline_y = { wezterm.strftime(" %H:%M | W%V ") },
+    tabline_y = {
+      function()
+        return wezterm.strftime(" %H:%M | W%V ")
+      end,
+    },
   },
 })
 tabline.apply_to_config(config)
@@ -216,6 +220,7 @@ config.keys = {
   { key = "s", mods = "LEADER", action = wezterm.action.SplitHorizontal({ domain = "CurrentPaneDomain" }) },
   { key = "v", mods = "LEADER", action = wezterm.action.SplitVertical({ domain = "CurrentPaneDomain" }) },
   { key = "z", mods = "LEADER", action = wezterm.action.TogglePaneZoomState },
+  { key = "o", mods = "LEADER", action = wezterm.action.ActivatePaneDirection("Next") },
   {
     key = "[",
     mods = "LEADER",
@@ -321,6 +326,7 @@ end)
 
 config.ssh_domains = {
   { name = "buildarn", remote_address = "buildarn", username = "adam" },
+  { name = "ha", remote_address = "ha", username = "adam", remote_wezterm_path = "/home/adam/bin/wezterm" },
 }
 
 return config
