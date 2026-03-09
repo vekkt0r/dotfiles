@@ -19,6 +19,35 @@ config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
 config.hide_tab_bar_if_only_one_tab = true
 config.tab_bar_at_bottom = true
 config.window_close_confirmation = "NeverPrompt"
+config.disable_default_quick_select_patterns = true
+config.quick_select_patterns = {
+  -- markdown_url
+  "\\[[^]]*\\]\\(([^)]+)\\)",
+  -- url
+  "(?:https?://|git@|git://|ssh://|ftp://|file://)\\S+",
+  -- diff_a
+  "--- a/(\\S+)",
+  -- diff_b
+  "\\+\\+\\+ b/(\\S+)",
+  -- docker
+  "sha256:([0-9a-f]{64})",
+  -- path
+  "(?:[.\\w\\-@~\\+]+)?(?:/+[.\\w\\-@\\+]+)+",
+  -- color
+  "#[0-9a-fA-F]{6}",
+  -- uuid
+  "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}",
+  -- sha
+  "[0-9a-f]{7,40}",
+  -- ip
+  "\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}",
+  -- ipv6
+  "[A-f0-9:]+:+[A-f0-9:]+[%\\w\\d]+",
+  -- address
+  "0x[0-9a-fA-F]+",
+  -- number
+  "[0-9]{4,}",
+}
 config.key_tables = {
   copy_mode = wezterm.gui.default_key_tables().copy_mode,
   search_mode = wezterm.gui.default_key_tables().search_mode,
