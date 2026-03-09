@@ -94,6 +94,7 @@ end, { silent = true, desc = 'Start syncing current file' })
 
 -- CodeCompanion
 vim.cmd [[cab cc CodeCompanion]]
+map('v', '<leader>cc', ':CodeCompanion ', { silent = true, desc = 'CodeCompanion visual selection' })
 map('n', '<leader>cc', ':CodeCompanionChat Toggle<CR>', { silent = true, desc = 'Open CodeCompanionChat buffer' })
 map('n', '<leader>cn', ':CodeCompanionChat<CR>', { silent = true, desc = 'Open new CodeCompanionChat buffer' })
 
@@ -130,6 +131,7 @@ vim.api.nvim_create_autocmd('TermOpen', {
   pattern = 'term://*',
   callback = function()
     vim.keymap.set('n', '<Esc>', 'i', { buffer = true })
+    vim.keymap.set('n', '<Enter>', 'i<CR>', { buffer = true })
     vim.keymap.set('n', '<C-p>', 'i<C-p>', { buffer = true })
   end,
 })
