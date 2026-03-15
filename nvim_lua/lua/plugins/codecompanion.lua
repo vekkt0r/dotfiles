@@ -11,6 +11,13 @@ return {
       interactions = {
         chat = {
           adapter = 'abacus',
+          tools = {
+            ['run_command'] = {
+              opts = {
+                allowed_in_yolo_mode = true,
+              },
+            },
+          },
         },
         inline = {
           adapter = 'abacus',
