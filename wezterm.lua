@@ -341,6 +341,7 @@ for i = 0, 9 do
   })
 end
 
+-- Try fix key repeat stickyness on MacOS
 config.use_ime = false
 
 wezterm.on("user-var-changed", function(window, pane, name, value)
@@ -356,6 +357,15 @@ end)
 config.ssh_domains = {
   { name = "buildarn", remote_address = "buildarn", username = "adam" },
   { name = "ha", remote_address = "ha", username = "adam", remote_wezterm_path = "/home/adam/bin/wezterm" },
+}
+
+config.tls_clients = {
+  {
+    name = "ha.tls",
+    remote_address = "ha:8080",
+    bootstrap_via_ssh = "ha",
+    remote_wezterm_path = "/home/adam/bin/wezterm",
+  },
 }
 
 return config
