@@ -108,16 +108,17 @@ local function temperature()
 end
 
 -- Custom mode indicator for leader
-if not require("tabline.config").component_opts then -- only init once
-  local get_mode = require("tabline.components.window.mode").get
-  local mode_with_leader = function(window)
+local mode_module = require("tabline.components.window.mode")
+if not mode_module._leader_override_applied then
+  local original_get = mode_module.get
+  mode_module.get = function(window)
     if window:leader_is_active() then
       return "leader_mode"
     else
-      return get_mode(window)
+      return original_get(window)
     end
   end
-  require("tabline.components.window.mode").get = mode_with_leader
+  mode_module._leader_override_applied = true
 end
 
 tabline.setup({
