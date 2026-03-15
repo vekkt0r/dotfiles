@@ -1,0 +1,11 @@
+[workspace]
+roots = ["/Users/adam/src/ttx"]
+
+[[lsp_servers]]
+language_id = "cpp"
+command = "/Users/adam/.local/share/nvim_lua/mason/bin/clangd"
+args = ["--background-index", "--clang-tidy"]
+file_patterns = ["**/*.cpp", "**/*.cc", "**/*.cxx", "**/*.h", "**/*.hpp"]
+
+[lsp_servers.initialization_options]
+compilationDatabasePath = "build"

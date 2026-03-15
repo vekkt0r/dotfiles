@@ -76,6 +76,13 @@ return {
           },
         },
       },
+      mcp = {
+        servers = {
+          ['mcpls'] = {
+            cmd = { 'mcpls' },
+          },
+        },
+      },
       extensions = {},
     },
     config = function(_, opts)
