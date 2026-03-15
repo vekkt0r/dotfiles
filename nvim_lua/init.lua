@@ -74,7 +74,8 @@ map('n', '<leader>fs', builtin.git_status)
 -- map('n', '<leader>fh', builtin.help_tags)
 
 -- lsp
-map('n', '<leader>m', ':lua vim.lsp.buf.code_action()<CR>')
+map('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>')
+map('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>')
 map('n', '<Leader>o', '<Cmd>LspClangdSwitchSourceHeader<CR>')
 
 -- Molten
