@@ -128,6 +128,7 @@ for k, v in pairs(git_commands) do
 end
 
 -- Terminal specific
+map('t', '<C-q>', '<C-\\><C-n>')
 vim.api.nvim_create_autocmd('TermOpen', {
   pattern = 'term://*',
   callback = function()
