@@ -76,7 +76,7 @@ map('n', '<leader>fs', builtin.git_status)
 -- lsp
 map('n', '<leader>la', ':lua vim.lsp.buf.code_action()<CR>')
 map('n', '<leader>lr', ':lua vim.lsp.buf.rename()<CR>')
-map('n', '<Leader>o', '<Cmd>LspClangdSwitchSourceHeader<CR>')
+map('n', '<Leader>lo', '<Cmd>LspClangdSwitchSourceHeader<CR>')
 
 -- Molten
 map('n', '<leader>mi', ':MoltenInit<CR>', { silent = true, desc = 'Initialize the plugin' })
