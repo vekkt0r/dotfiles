@@ -34,8 +34,14 @@ return {
         default = { 'neopyter', 'lsp', 'path', 'snippets', 'buffer', 'codecompanion' },
         per_filetype = {
           python = { inherit_defaults = true, 'neopyter' },
+          org = { 'orgmode' },
         },
         providers = {
+          orgmode = {
+            name = 'Orgmode',
+            module = 'orgmode.org.autocompletion.blink',
+            fallbacks = { 'buffer' },
+          },
           neopyter = {
             name = 'Neopyter',
             module = 'neopyter.blink',
