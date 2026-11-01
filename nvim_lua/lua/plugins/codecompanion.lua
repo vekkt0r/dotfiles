@@ -14,7 +14,7 @@ return {
           tools = {
             ['run_command'] = {
               opts = {
-                allowed_in_yolo_mode = true,
+                protect = true,
               },
             },
           },
@@ -51,7 +51,7 @@ return {
               },
               schema = {
                 model = {
-                  default = 'deepseek-ai/DeepSeek-V3.2',
+                  default = 'gpt-5.6-luna',
                 },
               },
             })
